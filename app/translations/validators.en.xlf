@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" datatype="plaintext" original="validators">
+    <body>
+      <trans-unit id="field.not_numeric">
+        <source>field.not_numeric</source>
+        <target>Enter a number with at most 4 decimal places.</target>
+      </trans-unit>
+      <trans-unit id="field.invalid_date">
+        <source>field.invalid_date</source>
+        <target>Enter a valid date.</target>
+      </trans-unit>
+      <trans-unit id="field.period_order">
+        <source>field.period_order</source>
+        <target>The end date must be on or after the start date.</target>
+      </trans-unit>
+      <trans-unit id="field.invalid_url">
+        <source>field.invalid_url</source>
+        <target>Enter a valid https URL.</target>
+      </trans-unit>
+      <trans-unit id="field.invalid_choice">
+        <source>field.invalid_choice</source>
+        <target>Choose a value from the list.</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

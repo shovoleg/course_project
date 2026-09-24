@@ -1,0 +1,79 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ 'nav.home'|trans }}{% endblock %}
+
+{% block body %}
+    <div class="row g-3 mb-4">
+        {% for key, value in {cvs24h: cvs24h, positions: positions, candidates: candidates, recruiters: recruiters, cvs: cvs} %}
+            <div class="col-6 col-md">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <div class="display-6">{{ value }}</div>
+                        <div class="text-body-secondary">{{ ('stats.' ~ key)|trans }}</div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    <div class="row g-4">
+        <div class="col-lg-7">
+            <h2 class="h4">{{ 'home.latest'|trans }}</h2>
+            <div class="table-responsive">
+                <table class="table table-hover align-middle">
+                    <thead>
+                        <tr>
+                            <th>{{ 'position.title'|trans }}</th>
+                            <th>{{ 'common.updated'|trans }}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for position in latest %}
+                            <tr>
+                                <td><a href="{{ path('app_position_show', {id: position.id}) }}">{{ position.title }}</a></td>
+                                <td>{{ position.updatedAt|date('Y-m-d H:i') }}</td>
+                            </tr>
+                        {% else %}
+                            <tr><td colspan="2">{{ 'position.empty'|trans }}</td></tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <h2 class="h4 mt-4">{{ 'home.popular'|trans }}</h2>
+            <div class="table-responsive">
+                <table class="table align-middle">
+                    <thead>
+                        <tr>
+                            <th>{{ 'position.title'|trans }}</th>
+                            <th>{{ 'position.cv_count'|trans }}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for row in popular %}
+                            <tr>
+                                <td><a href="{{ path('app_position_show', {id: row.id}) }}">{{ row.title }}</a></td>
+                                <td>{{ row.cvCount }}</td>
+                            </tr>
+                        {% else %}
+                            <tr><td colspan="2">{{ 'position.empty'|trans }}</td></tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="col-lg-5">
+            <div class="card">
+                <div class="card-header">{{ 'home.tags'|trans }}</div>
+                <div class="list-group list-group-flush" style="max-height: 28rem; overflow: auto">
+                    {% for tag in tags %}
+                        <a class="list-group-item list-group-item-action d-flex justify-content-between align-items-center" href="{{ path(is_granted('ROLE_RECRUITER') ? 'app_search' : 'app_position_index', is_granted('ROLE_RECRUITER') ? {q: tag.name} : {tag: tag.name}) }}">
+                            <span>{{ tag.name }}</span>
+                            <span class="badge text-bg-secondary">{{ tag.weight }}</span>
+                        </a>
+                    {% else %}
+                        <div class="list-group-item text-body-secondary">{{ 'common.none'|trans }}</div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

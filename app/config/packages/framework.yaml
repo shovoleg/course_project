@@ -1,0 +1,19 @@
+framework:
+    secret: '%env(APP_SECRET)%'
+    session: true
+    trusted_proxies: 'private_ranges'
+    trusted_headers: ['x-forwarded-for', 'x-forwarded-host', 'x-forwarded-proto', 'x-forwarded-port', 'x-forwarded-prefix']
+    default_locale: en
+    enabled_locales: ['en', 'ru']
+
+when@prod:
+    framework:
+        session:
+            cookie_secure: true
+            cookie_samesite: lax
+
+when@test:
+    framework:
+        test: true
+        session:
+            storage_factory_id: session.storage.factory.mock_file

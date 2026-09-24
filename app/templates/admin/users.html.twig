@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ 'nav.users'|trans }}{% endblock %}
+
+{% block body %}
+    <div data-controller="table-toolbar">
+        <h1 class="h3 mb-3">{{ 'nav.users'|trans }}</h1>
+        <div class="btn-toolbar gap-2 mb-3">
+            <button class="btn btn-outline-primary btn-sm" type="button" data-table-toolbar-target="needsSelection" data-action="table-toolbar#open" data-table-toolbar-url-param="{{ path('app_admin_roles', {id: 999999})|replace({'999999': '__id__'}) }}">{{ 'action.roles'|trans }}</button>
+            <button class="btn btn-outline-secondary btn-sm" type="button" data-table-toolbar-target="needsSelection" data-action="table-toolbar#open" data-table-toolbar-url-param="{{ path('app_profile_show', {id: 999999})|replace({'999999': '__id__'}) }}">{{ 'action.edit'|trans }}</button>
+            <form method="post" data-action-template="{{ path('app_admin_block', {id: 999999})|replace({'999999': '__id__'}) }}">
+                <input type="hidden" name="_token" data-controller="csrf-protection" value="{{ csrf_token('submit') }}">
+                <input type="hidden" name="version">
+                <button class="btn btn-outline-warning btn-sm" data-table-toolbar-target="needsSelection" data-action="table-toolbar#assign">{{ 'action.block'|trans }}</button>
+            </form>
+            <form method="post" data-action-template="{{ path('app_admin_unblock', {id: 999999})|replace({'999999': '__id__'}) }}">
+                <input type="hidden" name="_token" data-controller="csrf-protection" value="{{ csrf_token('submit') }}">
+                <input type="hidden" name="version">
+                <button class="btn btn-outline-success btn-sm" data-table-toolbar-target="needsSelection" data-action="table-toolbar#assign">{{ 'action.unblock'|trans }}</button>
+            </form>
+            <form method="post" data-action-template="{{ path('app_admin_delete', {id: 999999})|replace({'999999': '__id__'}) }}" data-confirm="{{ 'user.confirm_delete'|trans }}">
+                <input type="hidden" name="_token" data-controller="csrf-protection" value="{{ csrf_token('submit') }}">
+                <input type="hidden" name="version">
+                <button class="btn btn-outline-danger btn-sm" data-table-toolbar-target="needsSelection" data-action="table-toolbar#assign">{{ 'action.delete'|trans }}</button>
+            </form>
+        </div>
+        <div class="table-responsive">
+            <table class="table align-middle">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>{{ 'user.email'|trans }}</th>
+                        <th>{{ 'user.roles'|trans }}</th>
+                        <th>{{ 'common.status'|trans }}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for account in users %}
+                        <tr>
+                            <td><input type="radio" name="selected" value="{{ account.id }}" data-version="{{ account.version }}" data-table-toolbar-target="row" data-action="change->table-toolbar#refresh"></td>
+                            <td>{{ account.email }}</td>
+                            <td>
+                                {% for role in account.roles %}
+                                    {% if role != 'ROLE_USER' %}
+                                        <span class="badge text-bg-secondary">{{ ('role.' ~ role|replace({'ROLE_': ''})|lower)|trans }}</span>
+                                    {% endif %}
+                                {% endfor %}
+                            </td>
+                            <td>{{ account.blocked ? 'user.blocked'|trans : 'user.active'|trans }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}

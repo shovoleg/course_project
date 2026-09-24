@@ -1,0 +1,19 @@
+{% for post in posts %}
+    <article class="border-bottom py-3" data-id="{{ post.id }}">
+        <div class="d-flex justify-content-between">
+            <strong>
+                {% if is_granted('PUBLIC_PROFILE_VIEW', post.author) %}
+                    <a href="{{ path('app_public_profile', {id: post.author.id}) }}">{{ authorNames[post.author.id]|default(post.author.email) }}</a>
+                {% else %}
+                    {{ authorNames[post.author.id]|default(post.author.email) }}
+                {% endif %}
+            </strong>
+            <time class="text-body-secondary">{{ post.createdAt|date('Y-m-d H:i') }}</time>
+        </div>
+        <div class="mt-2">{{ post.body|md }}</div>
+    </article>
+{% else %}
+    {% if app.request.query.get('after') is empty %}
+        <p class="text-body-secondary" data-discussion-target="empty">{{ 'discussion.empty'|trans }}</p>
+    {% endif %}
+{% endfor %}

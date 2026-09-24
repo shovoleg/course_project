@@ -1,0 +1,92 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ document.name }} — {{ cv.position.title }}{% endblock %}
+
+{% block body %}
+    <div class="d-flex justify-content-between align-items-center mb-3 gap-2 flex-wrap">
+        <div>
+            <a href="{{ path('app_position_show', {id: cv.position.id}) }}">{{ cv.position.title }}</a>
+            <span class="badge text-bg-secondary">{{ ('cv.status.' ~ cv.status.value)|trans }}</span>
+            <span class="text-body-secondary">{{ 'cv.likes'|trans }}: {{ likes }}</span>
+        </div>
+        <div class="btn-toolbar gap-2">
+            {% if is_granted('CV_LIKE', cv) %}
+                <form method="post" action="{{ path('app_cv_like', {id: cv.id}) }}">
+                    <input type="hidden" name="_token" data-controller="csrf-protection" value="{{ csrf_token('submit') }}">
+                    <button class="btn btn-outline-primary btn-sm" type="submit">{{ (liked ? 'action.unlike' : 'action.like')|trans }}</button>
+                </form>
+            {% endif %}
+            {% if is_granted('CV_EDIT', cv) and cv.status.value != 'published' %}
+                <form method="post" action="{{ path('app_cv_publish', {id: cv.id}) }}">
+                    <input type="hidden" name="_token" data-controller="csrf-protection" value="{{ csrf_token('submit') }}">
+                    <input type="hidden" name="version" value="{{ cv.version }}">
+                    <button class="btn btn-primary btn-sm" type="submit">{{ 'action.publish'|trans }}</button>
+                </form>
+            {% endif %}
+        </div>
+    </div>
+    {% if is_granted('CV_EDIT', cv) and not document.complete %}
+        <div class="alert alert-warning">{{ 'cv.publish_blocked'|trans }}</div>
+    {% endif %}
+    <article class="cv-sheet mx-auto" {% if is_granted('CV_EDIT', cv) %}data-controller="autosave" data-autosave-url-value="{{ path('app_profile_autosave', {id: cv.owner.id}) }}" data-autosave-saved-value="{{ 'profile.saved'|trans }}" data-autosave-conflict-value="{{ 'profile.conflict'|trans }}"{% endif %}>
+        <header class="d-flex gap-3 align-items-center border-bottom pb-3 mb-4">
+            {% if document.photo %}
+                <img src="{{ document.photo }}" alt="" class="rounded-circle" style="width: 96px; height: 96px; object-fit: cover">
+            {% endif %}
+            <div>
+                <h1 class="h2 mb-1">{{ document.name }}</h1>
+                <div>{{ cv.position.title }}{% if cv.position.company %} · {{ cv.position.company }}{% endif %}</div>
+                <div class="text-body-secondary">{{ document.location }}</div>
+            </div>
+            {% if is_granted('CV_EDIT', cv) %}
+                <button class="btn btn-outline-primary btn-sm ms-auto" type="button" data-action="autosave#saveNow">{{ 'action.save'|trans }}</button>
+                <span data-autosave-target="status"></span>
+            {% endif %}
+        </header>
+        {% for code, items in document.sections %}
+            <section class="mb-4">
+                <h2 class="h5 border-bottom pb-1">{{ ('category.' ~ code)|trans }}</h2>
+                {% for item in items %}
+                    {% if is_granted('CV_EDIT', cv) %}
+                        {% include 'partials/_value_field.html.twig' with {attribute: item.attribute, value: item.value, empty: item.empty} %}
+                    {% else %}
+                        <div class="row py-2 {{ item.empty ? 'cv-empty rounded' : '' }}">
+                            <div class="col-md-4 fw-semibold">{{ item.attribute.name }}</div>
+                            <div class="col-md-8">
+                                {% if item.attribute.type.value == 'image' and item.text %}
+                                    <img src="{{ item.text }}" alt="" class="img-fluid" style="max-height: 160px">
+                                {% elseif item.attribute.type.value == 'text' %}
+                                    {{ item.text|md }}
+                                {% elseif item.attribute.type.value == 'boolean' and item.text %}
+                                    {{ (item.text == '1' ? 'common.yes' : 'common.no')|trans }}
+                                {% else %}
+                                    {{ item.text ?: 'cv.empty'|trans }}
+                                {% endif %}
+                            </div>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </section>
+        {% endfor %}
+        <section>
+            <h2 class="h5 border-bottom pb-1">{{ 'cv.projects'|trans }}</h2>
+            {% for project in document.projects %}
+                <div class="mb-4">
+                    <h3 class="h6 mb-1">{{ project.name }}</h3>
+                    <div class="text-body-secondary small mb-2">
+                        {{ project.periodStart ? project.periodStart|date('Y-m-d') : '' }}
+                        {% if project.periodEnd %} — {{ project.periodEnd|date('Y-m-d') }}{% endif %}
+                    </div>
+                    <div>{{ project.description|md }}</div>
+                    <div class="mt-2">
+                        {% for tag in project.tags %}
+                            <span class="badge text-bg-light border">{{ tag.name }}</span>
+                        {% endfor %}
+                    </div>
+                </div>
+            {% else %}
+                <p class="text-body-secondary">{{ 'project.empty'|trans }}</p>
+            {% endfor %}
+        </section>
+    </article>
+{% endblock %}

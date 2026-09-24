@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" target-language="ru" datatype="plaintext" original="validators">
+    <body>
+      <trans-unit id="field.not_numeric">
+        <source>field.not_numeric</source>
+        <target>Введите число не больше чем с 4 знаками после запятой.</target>
+      </trans-unit>
+      <trans-unit id="field.invalid_date">
+        <source>field.invalid_date</source>
+        <target>Введите корректную дату.</target>
+      </trans-unit>
+      <trans-unit id="field.period_order">
+        <source>field.period_order</source>
+        <target>Дата окончания должна быть не раньше даты начала.</target>
+      </trans-unit>
+      <trans-unit id="field.invalid_url">
+        <source>field.invalid_url</source>
+        <target>Введите корректный адрес https.</target>
+      </trans-unit>
+      <trans-unit id="field.invalid_choice">
+        <source>field.invalid_choice</source>
+        <target>Выберите значение из списка.</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

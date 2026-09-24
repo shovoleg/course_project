@@ -1,0 +1,39 @@
+name: course_project
+
+services:
+  app:
+    image: webdevops/php-nginx-dev:8.4
+    restart: unless-stopped
+    environment:
+      WEB_DOCUMENT_ROOT: /app/public
+      WEB_DOCUMENT_INDEX: index.php
+      PHP_DISMOD: ioncube
+      DATABASE_URL: mysql://user:pass@database:3306/db_project?serverVersion=8.4.4&charset=utf8mb4
+      php.fastcgi.logging: "0"
+    ports:
+      - target: 80
+        published: 8010
+    volumes:
+      - ./app:/app
+      - ./nginx/zz-fastcgi-buffers.conf:/opt/docker/etc/nginx/conf.d/zz-fastcgi-buffers.conf:ro
+      - ./nginx/zz-fastcgi-buffers.conf:/opt/docker/etc/nginx/vhost.common.d/zz-fastcgi-buffers.conf:ro
+    working_dir: /app
+    depends_on:
+      - database
+
+  database:
+    image: mysql:8.4.4
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: db_project
+      MYSQL_USER: user
+      MYSQL_PASSWORD: pass
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - target: 3306
+        published: 3306
+    volumes:
+      - db-data:/var/lib/mysql:rw
+
+volumes:
+  db-data:

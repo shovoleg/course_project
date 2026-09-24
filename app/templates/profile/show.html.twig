@@ -1,0 +1,168 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ 'nav.profile'|trans }}{% endblock %}
+
+{% block body %}
+    <div data-controller="autosave" data-autosave-url-value="{{ path('app_profile_autosave', {id: profile.id}) }}" data-autosave-saved-value="{{ 'profile.saved'|trans }}" data-autosave-conflict-value="{{ 'profile.conflict'|trans }}" data-autosave-unnamed-value="{{ 'project.untitled'|trans }}">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h1 class="h3 mb-0">{{ profile.email }}</h1>
+            <div class="d-flex align-items-center gap-2">
+                <span class="text-body-secondary" data-autosave-target="status"></span>
+                <button class="btn btn-primary btn-sm" type="button" data-action="autosave#saveNow">{{ 'action.save'|trans }}</button>
+            </div>
+        </div>
+        <div class="row g-4">
+            <div class="col-lg-6">
+                <section class="card mb-4">
+                    <div class="card-header">{{ 'profile.me'|trans }}</div>
+                    <div class="card-body">
+                        {% for value in builtin %}
+                            {% include 'partials/_value_field.html.twig' with {attribute: value.attribute, value: value, empty: value.empty} %}
+                        {% endfor %}
+                    </div>
+                </section>
+                <section class="card">
+                    <div class="card-header">{{ 'profile.info'|trans }}</div>
+                    <div class="card-body">
+                        {% for value in info %}
+                            {% include 'partials/_value_field.html.twig' with {attribute: value.attribute, value: value, empty: value.empty} %}
+                        {% else %}
+                            <p class="text-body-secondary">{{ 'attribute.empty'|trans }}</p>
+                        {% endfor %}
+                        <form method="post" action="{{ path('app_profile_attribute_add', {id: profile.id}) }}" class="border-top pt-3" data-controller="attribute-picker" data-attribute-picker-url-value="{{ path('app_attribute_lookup') }}">
+                            <input type="hidden" name="_token" data-controller="csrf-protection" value="{{ csrf_token('submit') }}">
+                            <input type="hidden" name="attribute" data-attribute-picker-target="chosen">
+                            <div class="row g-2 mb-2">
+                                <div class="col-md-4">
+                                    <select class="form-select" data-attribute-picker-target="category" data-action="change->attribute-picker#search">
+                                        <option value="">{{ 'attribute.category'|trans }}</option>
+                                        {% for category in categories %}
+                                            <option value="{{ category.code }}">{{ ('category.' ~ category.code)|trans }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                                <div class="col-md-8">
+                                    <input class="form-control" data-attribute-picker-target="query" data-action="input->attribute-picker#search" placeholder="{{ 'attribute.prefix'|trans }}">
+                                </div>
+                            </div>
+                            <div class="list-group mb-2" data-attribute-picker-target="results"></div>
+                            <button class="btn btn-outline-primary btn-sm" type="submit">{{ 'action.add'|trans }}</button>
+                        </form>
+                        {% if info %}
+                            <form method="post" class="mt-3" data-controller="table-toolbar" data-action-template="{{ path('app_profile_attribute_remove', {id: profile.id, attributeId: 999999})|replace({'999999': '__id__'}) }}">
+                                <input type="hidden" name="_token" data-controller="csrf-protection" value="{{ csrf_token('submit') }}">
+                                <input type="hidden" name="version">
+                                <button class="btn btn-outline-danger btn-sm" type="submit" formaction="" data-table-toolbar-target="needsSelection" data-action="table-toolbar#assign">{{ 'action.remove'|trans }}</button>
+                                <div class="table-responsive mt-2">
+                                    <table class="table table-sm">
+                                        <tbody>
+                                            {% for value in info %}
+                                                <tr>
+                                                    <td style="width: 2rem"><input type="radio" name="selected" value="{{ value.attribute.id }}" data-version="{{ value.version }}" data-table-toolbar-target="row" data-action="change->table-toolbar#refresh"></td>
+                                                    <td>{{ value.attribute.name }}</td>
+                                                </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </form>
+                        {% endif %}
+                    </div>
+                </section>
+            </div>
+            <div class="col-lg-6">
+                <section class="card mb-4">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <span>{{ 'profile.projects'|trans }}</span>
+                        <button class="btn btn-outline-primary btn-sm" type="button" data-action="autosave#addProject">{{ 'action.add'|trans }}</button>
+                    </div>
+                    <div class="card-body">
+                        <div data-autosave-target="projects">
+                            {% for project in projects %}
+                                <div class="border rounded p-3 mb-3" data-project-id="{{ project.id }}" data-version="{{ project.version }}" data-client-key="{{ project.id }}">
+                                    <input class="form-control mb-2" data-field="name" value="{{ project.name }}" placeholder="{{ 'project.name'|trans }}">
+                                    <div class="row g-2 mb-2">
+                                        <div class="col"><input class="form-control" type="date" data-field="periodStart" value="{{ project.periodStart ? project.periodStart|date('Y-m-d') : '' }}" aria-label="{{ 'project.start'|trans }}"></div>
+                                        <div class="col"><input class="form-control" type="date" data-field="periodEnd" value="{{ project.periodEnd ? project.periodEnd|date('Y-m-d') : '' }}" aria-label="{{ 'project.end'|trans }}"></div>
+                                    </div>
+                                    <textarea class="form-control mb-2" rows="4" data-field="description" placeholder="{{ 'project.description'|trans }}">{{ project.description }}</textarea>
+                                    <select multiple data-field="tags" data-controller="tags" data-tags-url-value="{{ path('app_tag_suggest') }}">
+                                        {% for tag in project.tags %}
+                                            <option value="{{ tag.name }}" selected>{{ tag.name }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            {% endfor %}
+                        </div>
+                        <p class="text-body-secondary {{ projects ? 'd-none' : '' }}" data-autosave-target="projectEmpty">{{ 'project.empty'|trans }}</p>
+                        <form method="post" class="{{ projects ? '' : 'd-none' }}" data-autosave-target="projectDelete" data-controller="table-toolbar" data-action-template="{{ path('app_project_delete', {id: 999999})|replace({'999999': '__id__'}) }}" data-confirm="{{ 'user.confirm_delete'|trans }}">
+                            <input type="hidden" name="_token" data-controller="csrf-protection" value="{{ csrf_token('submit') }}">
+                            <input type="hidden" name="version">
+                            <button class="btn btn-outline-danger btn-sm" data-table-toolbar-target="needsSelection" data-action="table-toolbar#assign">{{ 'action.delete'|trans }}</button>
+                            <div class="table-responsive mt-2">
+                                <table class="table table-sm">
+                                    <tbody data-autosave-target="projectRows">
+                                        {% for project in projects %}
+                                            <tr data-client-key="{{ project.id }}">
+                                                <td style="width: 2rem"><input type="radio" name="selected" value="{{ project.id }}" data-version="{{ project.version }}" data-table-toolbar-target="row" data-action="change->table-toolbar#refresh"></td>
+                                                <td data-project-label>{{ project.name ?: 'project.untitled'|trans }}</td>
+                                            </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </form>
+                        <template data-autosave-target="projectBlueprint">
+                            <div class="border rounded p-3 mb-3" data-project-id="0" data-version="0" data-client-key="">
+                                <input class="form-control mb-2" data-field="name" value="" placeholder="{{ 'project.name'|trans }}">
+                                <div class="row g-2 mb-2">
+                                    <div class="col"><input class="form-control" type="date" data-field="periodStart" value="" aria-label="{{ 'project.start'|trans }}"></div>
+                                    <div class="col"><input class="form-control" type="date" data-field="periodEnd" value="" aria-label="{{ 'project.end'|trans }}"></div>
+                                </div>
+                                <textarea class="form-control mb-2" rows="4" data-field="description" placeholder="{{ 'project.description'|trans }}"></textarea>
+                                <select multiple data-field="tags" data-controller="tags" data-tags-url-value="{{ path('app_tag_suggest') }}"></select>
+                            </div>
+                        </template>
+                    </div>
+                </section>
+                <section class="card">
+                    <div class="card-header">{{ 'profile.cvs'|trans }}</div>
+                    <div class="card-body">
+                        <div data-controller="table-toolbar">
+                            <div class="btn-toolbar gap-2 mb-2">
+                                <button class="btn btn-outline-primary btn-sm" type="button" data-table-toolbar-target="needsSelection" data-action="table-toolbar#open" data-table-toolbar-url-param="{{ path('app_cv_show', {id: 999999})|replace({'999999': '__id__'}) }}">{{ 'action.open'|trans }}</button>
+                                <form method="post" data-action-template="{{ path('app_cv_delete', {id: 999999})|replace({'999999': '__id__'}) }}" data-confirm="{{ 'user.confirm_delete_cv'|trans }}">
+                                    <input type="hidden" name="_token" data-controller="csrf-protection" value="{{ csrf_token('submit') }}">
+                                    <input type="hidden" name="version">
+                                    <button class="btn btn-outline-danger btn-sm" data-table-toolbar-target="needsSelection" data-action="table-toolbar#assign">{{ 'action.delete'|trans }}</button>
+                                </form>
+                            </div>
+                            <div class="table-responsive">
+                                <table class="table table-sm align-middle">
+                                    <thead>
+                                        <tr>
+                                            <th></th>
+                                            <th>{{ 'position.title'|trans }}</th>
+                                            <th>{{ 'common.status'|trans }}</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for cv in cvs %}
+                                            <tr>
+                                                <td><input type="radio" name="cv" value="{{ cv.id }}" data-version="{{ cv.version }}" data-table-toolbar-target="row" data-action="change->table-toolbar#refresh"></td>
+                                                <td><a href="{{ path('app_cv_show', {id: cv.id}) }}">{{ cv.position.title }}</a></td>
+                                                <td>{{ ('cv.status.' ~ cv.status.value)|trans }}</td>
+                                            </tr>
+                                        {% else %}
+                                            <tr><td colspan="3">{{ 'cv.none'|trans }}</td></tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,12 @@
+# workspace
+.oauth-update.zip
+oauth-update.zip
+# Docker
+db-data/
+# IDE
+.idea/
+.vscode/
+*.swp
+.DS_Store
+Thumbs.db
+# keep app/.gitignore as source of truth for Symfony

@@ -1,0 +1,796 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" datatype="plaintext" original="messages" target-language="ru">
+    <body>
+      <trans-unit id="app.name">
+        <source>app.name</source>
+        <target>Платформа CV</target>
+      </trans-unit>
+      <trans-unit id="nav.home">
+        <source>nav.home</source>
+        <target>Главная</target>
+      </trans-unit>
+      <trans-unit id="nav.positions">
+        <source>nav.positions</source>
+        <target>Позиции</target>
+      </trans-unit>
+      <trans-unit id="nav.library">
+        <source>nav.library</source>
+        <target>Библиотека</target>
+      </trans-unit>
+      <trans-unit id="nav.profile">
+        <source>nav.profile</source>
+        <target>Профиль</target>
+      </trans-unit>
+      <trans-unit id="nav.users">
+        <source>nav.users</source>
+        <target>Пользователи</target>
+      </trans-unit>
+      <trans-unit id="nav.login">
+        <source>nav.login</source>
+        <target>Войти</target>
+      </trans-unit>
+      <trans-unit id="nav.register">
+        <source>nav.register</source>
+        <target>Регистрация</target>
+      </trans-unit>
+      <trans-unit id="nav.logout">
+        <source>nav.logout</source>
+        <target>Выйти</target>
+      </trans-unit>
+      <trans-unit id="nav.search">
+        <source>nav.search</source>
+        <target>Поиск</target>
+      </trans-unit>
+      <trans-unit id="nav.language">
+        <source>nav.language</source>
+        <target>Язык</target>
+      </trans-unit>
+      <trans-unit id="nav.theme">
+        <source>nav.theme</source>
+        <target>Тема</target>
+      </trans-unit>
+      <trans-unit id="nav.menu">
+        <source>nav.menu</source>
+        <target>Меню</target>
+      </trans-unit>
+      <trans-unit id="action.view">
+        <source>action.view</source>
+        <target>Открыть</target>
+      </trans-unit>
+      <trans-unit id="action.create">
+        <source>action.create</source>
+        <target>Создать</target>
+      </trans-unit>
+      <trans-unit id="action.edit">
+        <source>action.edit</source>
+        <target>Изменить</target>
+      </trans-unit>
+      <trans-unit id="action.duplicate">
+        <source>action.duplicate</source>
+        <target>Дублировать</target>
+      </trans-unit>
+      <trans-unit id="action.delete">
+        <source>action.delete</source>
+        <target>Удалить</target>
+      </trans-unit>
+      <trans-unit id="action.publish">
+        <source>action.publish</source>
+        <target>Опубликовать</target>
+      </trans-unit>
+      <trans-unit id="action.like">
+        <source>action.like</source>
+        <target>Нравится</target>
+      </trans-unit>
+      <trans-unit id="action.unlike">
+        <source>action.unlike</source>
+        <target>Убрать отметку</target>
+      </trans-unit>
+      <trans-unit id="action.save">
+        <source>action.save</source>
+        <target>Сохранить</target>
+      </trans-unit>
+      <trans-unit id="action.add">
+        <source>action.add</source>
+        <target>Добавить</target>
+      </trans-unit>
+      <trans-unit id="action.remove">
+        <source>action.remove</source>
+        <target>Убрать</target>
+      </trans-unit>
+      <trans-unit id="action.reload">
+        <source>action.reload</source>
+        <target>Обновить</target>
+      </trans-unit>
+      <trans-unit id="action.block">
+        <source>action.block</source>
+        <target>Заблокировать</target>
+      </trans-unit>
+      <trans-unit id="action.unblock">
+        <source>action.unblock</source>
+        <target>Разблокировать</target>
+      </trans-unit>
+      <trans-unit id="action.roles">
+        <source>action.roles</source>
+        <target>Роли</target>
+      </trans-unit>
+      <trans-unit id="action.open">
+        <source>action.open</source>
+        <target>Открыть</target>
+      </trans-unit>
+      <trans-unit id="role.candidate">
+        <source>role.candidate</source>
+        <target>Кандидат</target>
+      </trans-unit>
+      <trans-unit id="role.recruiter">
+        <source>role.recruiter</source>
+        <target>Рекрутер</target>
+      </trans-unit>
+      <trans-unit id="role.admin">
+        <source>role.admin</source>
+        <target>Администратор</target>
+      </trans-unit>
+      <trans-unit id="theme.light">
+        <source>theme.light</source>
+        <target>Светлая</target>
+      </trans-unit>
+      <trans-unit id="theme.dark">
+        <source>theme.dark</source>
+        <target>Тёмная</target>
+      </trans-unit>
+      <trans-unit id="auth.email">
+        <source>auth.email</source>
+        <target>Почта</target>
+      </trans-unit>
+      <trans-unit id="auth.password">
+        <source>auth.password</source>
+        <target>Пароль</target>
+      </trans-unit>
+      <trans-unit id="auth.password_repeat">
+        <source>auth.password_repeat</source>
+        <target>Повтор пароля</target>
+      </trans-unit>
+      <trans-unit id="auth.login">
+        <source>auth.login</source>
+        <target>Войти</target>
+      </trans-unit>
+      <trans-unit id="auth.register">
+        <source>auth.register</source>
+        <target>Регистрация</target>
+      </trans-unit>
+      <trans-unit id="auth.google">
+        <source>auth.google</source>
+        <target>Войти через Google</target>
+      </trans-unit>
+      <trans-unit id="auth.github">
+        <source>auth.github</source>
+        <target>Войти через GitHub</target>
+      </trans-unit>
+      <trans-unit id="auth.blocked">
+        <source>auth.blocked</source>
+        <target>Учётная запись заблокирована.</target>
+      </trans-unit>
+      <trans-unit id="auth.invalid">
+        <source>auth.invalid</source>
+        <target>Неверная почта или пароль.</target>
+      </trans-unit>
+      <trans-unit id="auth.oauth_unconfigured">
+        <source>auth.oauth_unconfigured</source>
+        <target>Вход через соцсети ещё не настроен. Почта и пароль работают.</target>
+      </trans-unit>
+      <trans-unit id="auth.oauth_failed">
+        <source>auth.oauth_failed</source>
+        <target>Вход через соцсеть не удался. Попробуйте снова или войдите по почте.</target>
+      </trans-unit>
+      <trans-unit id="auth.no_email">
+        <source>auth.no_email</source>
+        <target>Соцсеть не передала адрес почты.</target>
+      </trans-unit>
+      <trans-unit id="auth.have_account">
+        <source>auth.have_account</source>
+        <target>Уже есть учётная запись? Войдите.</target>
+      </trans-unit>
+      <trans-unit id="auth.no_account">
+        <source>auth.no_account</source>
+        <target>Нет учётной записи? Зарегистрируйтесь.</target>
+      </trans-unit>
+      <trans-unit id="flash.saved">
+        <source>flash.saved</source>
+        <target>Сохранено.</target>
+      </trans-unit>
+      <trans-unit id="flash.deleted">
+        <source>flash.deleted</source>
+        <target>Удалено.</target>
+      </trans-unit>
+      <trans-unit id="flash.published">
+        <source>flash.published</source>
+        <target>CV опубликовано.</target>
+      </trans-unit>
+      <trans-unit id="flash.created">
+        <source>flash.created</source>
+        <target>Создано.</target>
+      </trans-unit>
+      <trans-unit id="flash.duplicated">
+        <source>flash.duplicated</source>
+        <target>Позиция скопирована.</target>
+      </trans-unit>
+      <trans-unit id="flash.registered">
+        <source>flash.registered</source>
+        <target>Учётная запись создана. Можно входить.</target>
+      </trans-unit>
+      <trans-unit id="flash.blocked">
+        <source>flash.blocked</source>
+        <target>Пользователь заблокирован.</target>
+      </trans-unit>
+      <trans-unit id="flash.unblocked">
+        <source>flash.unblocked</source>
+        <target>Пользователь разблокирован.</target>
+      </trans-unit>
+      <trans-unit id="flash.roles_saved">
+        <source>flash.roles_saved</source>
+        <target>Роли сохранены.</target>
+      </trans-unit>
+      <trans-unit id="flash.conflict">
+        <source>flash.conflict</source>
+        <target>Запись уже изменил кто-то другой. Обновите страницу и повторите.</target>
+      </trans-unit>
+      <trans-unit id="flash.attribute_added">
+        <source>flash.attribute_added</source>
+        <target>Атрибут добавлен в профиль.</target>
+      </trans-unit>
+      <trans-unit id="flash.attribute_removed">
+        <source>flash.attribute_removed</source>
+        <target>Атрибут убран из профиля.</target>
+      </trans-unit>
+      <trans-unit id="flash.liked">
+        <source>flash.liked</source>
+        <target>Отметка сохранена.</target>
+      </trans-unit>
+      <trans-unit id="flash.unliked">
+        <source>flash.unliked</source>
+        <target>Отметка снята.</target>
+      </trans-unit>
+      <trans-unit id="error.version_conflict">
+        <source>error.version_conflict</source>
+        <target>Запись уже изменил кто-то другой. Обновите страницу и повторите.</target>
+      </trans-unit>
+      <trans-unit id="error.access_denied">
+        <source>error.access_denied</source>
+        <target>Нет доступа к этой странице.</target>
+      </trans-unit>
+      <trans-unit id="error.imgbb_key">
+        <source>error.imgbb_key</source>
+        <target>Ключ ImgBB неверный. Откройте api.imgbb.com и скопируйте ключ заново.</target>
+      </trans-unit>
+      <trans-unit id="error.cloud_missing">
+        <source>error.cloud_missing</source>
+        <target>Хранилище изображений не настроено. Зарегистрируйтесь на imgbb.com, откройте api.imgbb.com и вставьте ключ в app/.env.</target>
+      </trans-unit>
+      <trans-unit id="error.not_complete">
+        <source>error.not_complete</source>
+        <target>Заполните все подсвеченные поля перед публикацией.</target>
+      </trans-unit>
+      <trans-unit id="error.already_exists">
+        <source>error.already_exists</source>
+        <target>Такая запись уже есть.</target>
+      </trans-unit>
+      <trans-unit id="error.builtin">
+        <source>error.builtin</source>
+        <target>Встроенные атрибуты нельзя удалить.</target>
+      </trans-unit>
+      <trans-unit id="error.invalid">
+        <source>error.invalid</source>
+        <target>Запрос не выполнен.</target>
+      </trans-unit>
+      <trans-unit id="error.select_row">
+        <source>error.select_row</source>
+        <target>Сначала выберите строку.</target>
+      </trans-unit>
+      <trans-unit id="position.title">
+        <source>position.title</source>
+        <target>Название</target>
+      </trans-unit>
+      <trans-unit id="position.description">
+        <source>position.description</source>
+        <target>Краткое описание</target>
+      </trans-unit>
+      <trans-unit id="position.visibility">
+        <source>position.visibility</source>
+        <target>Доступ</target>
+      </trans-unit>
+      <trans-unit id="position.public">
+        <source>position.public</source>
+        <target>Публичная</target>
+      </trans-unit>
+      <trans-unit id="position.restricted">
+        <source>position.restricted</source>
+        <target>Ограниченная</target>
+      </trans-unit>
+      <trans-unit id="position.max_projects">
+        <source>position.max_projects</source>
+        <target>Максимум проектов</target>
+      </trans-unit>
+      <trans-unit id="position.company">
+        <source>position.company</source>
+        <target>Компания</target>
+      </trans-unit>
+      <trans-unit id="position.level">
+        <source>position.level</source>
+        <target>Уровень</target>
+      </trans-unit>
+      <trans-unit id="position.attributes">
+        <source>position.attributes</source>
+        <target>Атрибуты</target>
+      </trans-unit>
+      <trans-unit id="position.tags">
+        <source>position.tags</source>
+        <target>Теги проектов</target>
+      </trans-unit>
+      <trans-unit id="position.rules">
+        <source>position.rules</source>
+        <target>Правила доступа</target>
+      </trans-unit>
+      <trans-unit id="position.cvs">
+        <source>position.cvs</source>
+        <target>CV</target>
+      </trans-unit>
+      <trans-unit id="position.discussion">
+        <source>position.discussion</source>
+        <target>Обсуждение</target>
+      </trans-unit>
+      <trans-unit id="position.updated">
+        <source>position.updated</source>
+        <target>Обновлено</target>
+      </trans-unit>
+      <trans-unit id="position.empty">
+        <source>position.empty</source>
+        <target>Позиций пока нет.</target>
+      </trans-unit>
+      <trans-unit id="position.level.junior">
+        <source>position.level.junior</source>
+        <target>Junior</target>
+      </trans-unit>
+      <trans-unit id="position.level.middle">
+        <source>position.level.middle</source>
+        <target>Middle</target>
+      </trans-unit>
+      <trans-unit id="position.level.senior">
+        <source>position.level.senior</source>
+        <target>Senior</target>
+      </trans-unit>
+      <trans-unit id="position.level.c_level">
+        <source>position.level.c_level</source>
+        <target>C-level</target>
+      </trans-unit>
+      <trans-unit id="position.copy_of">
+        <source>position.copy_of</source>
+        <target>Копия %title%</target>
+      </trans-unit>
+      <trans-unit id="position.basic">
+        <source>position.basic</source>
+        <target>Описание</target>
+      </trans-unit>
+      <trans-unit id="position.filters">
+        <source>position.filters</source>
+        <target>Фильтр</target>
+      </trans-unit>
+      <trans-unit id="position.all_levels">
+        <source>position.all_levels</source>
+        <target>Все уровни</target>
+      </trans-unit>
+      <trans-unit id="position.cv_count">
+        <source>position.cv_count</source>
+        <target>CV</target>
+      </trans-unit>
+      <trans-unit id="position.no_rules">
+        <source>position.no_rules</source>
+        <target>Правил доступа нет.</target>
+      </trans-unit>
+      <trans-unit id="position.rule_hint">
+        <source>position.rule_hint</source>
+        <target>Ограниченная позиция видна только если выполнены все правила.</target>
+      </trans-unit>
+      <trans-unit id="position.access">
+        <source>position.access</source>
+        <target>Доступ</target>
+      </trans-unit>
+      <trans-unit id="position.create_cv">
+        <source>position.create_cv</source>
+        <target>Создать CV</target>
+      </trans-unit>
+      <trans-unit id="position.open_cv">
+        <source>position.open_cv</source>
+        <target>Открыть моё CV</target>
+      </trans-unit>
+      <trans-unit id="attribute.name">
+        <source>attribute.name</source>
+        <target>Название</target>
+      </trans-unit>
+      <trans-unit id="attribute.category">
+        <source>attribute.category</source>
+        <target>Категория</target>
+      </trans-unit>
+      <trans-unit id="attribute.type">
+        <source>attribute.type</source>
+        <target>Тип</target>
+      </trans-unit>
+      <trans-unit id="attribute.description">
+        <source>attribute.description</source>
+        <target>Описание</target>
+      </trans-unit>
+      <trans-unit id="attribute.builtin">
+        <source>attribute.builtin</source>
+        <target>Встроенный</target>
+      </trans-unit>
+      <trans-unit id="attribute.options">
+        <source>attribute.options</source>
+        <target>Варианты списка</target>
+      </trans-unit>
+      <trans-unit id="attribute.options_hint">
+        <source>attribute.options_hint</source>
+        <target>Один вариант на строку. Нужно только для типа «один из многих».</target>
+      </trans-unit>
+      <trans-unit id="attribute.empty">
+        <source>attribute.empty</source>
+        <target>Атрибутов пока нет.</target>
+      </trans-unit>
+      <trans-unit id="attribute.recent">
+        <source>attribute.recent</source>
+        <target>Недавние</target>
+      </trans-unit>
+      <trans-unit id="attribute.lookup">
+        <source>attribute.lookup</source>
+        <target>Найти атрибут</target>
+      </trans-unit>
+      <trans-unit id="attribute.prefix">
+        <source>attribute.prefix</source>
+        <target>Начните вводить название</target>
+      </trans-unit>
+      <trans-unit id="type.string">
+        <source>type.string</source>
+        <target>Строка</target>
+      </trans-unit>
+      <trans-unit id="type.text">
+        <source>type.text</source>
+        <target>Текст</target>
+      </trans-unit>
+      <trans-unit id="type.image">
+        <source>type.image</source>
+        <target>Изображение</target>
+      </trans-unit>
+      <trans-unit id="type.numeric">
+        <source>type.numeric</source>
+        <target>Число</target>
+      </trans-unit>
+      <trans-unit id="type.date">
+        <source>type.date</source>
+        <target>Дата</target>
+      </trans-unit>
+      <trans-unit id="type.period">
+        <source>type.period</source>
+        <target>Период</target>
+      </trans-unit>
+      <trans-unit id="type.boolean">
+        <source>type.boolean</source>
+        <target>Да или нет</target>
+      </trans-unit>
+      <trans-unit id="type.one_of_many">
+        <source>type.one_of_many</source>
+        <target>Один из многих</target>
+      </trans-unit>
+      <trans-unit id="category.personal_information">
+        <source>category.personal_information</source>
+        <target>Личные данные</target>
+      </trans-unit>
+      <trans-unit id="category.certification">
+        <source>category.certification</source>
+        <target>Сертификация</target>
+      </trans-unit>
+      <trans-unit id="category.domain_knowledge">
+        <source>category.domain_knowledge</source>
+        <target>Предметная область</target>
+      </trans-unit>
+      <trans-unit id="category.soft_skills">
+        <source>category.soft_skills</source>
+        <target>Гибкие навыки</target>
+      </trans-unit>
+      <trans-unit id="category.education">
+        <source>category.education</source>
+        <target>Образование</target>
+      </trans-unit>
+      <trans-unit id="category.languages">
+        <source>category.languages</source>
+        <target>Языки</target>
+      </trans-unit>
+      <trans-unit id="category.other">
+        <source>category.other</source>
+        <target>Другое</target>
+      </trans-unit>
+      <trans-unit id="operator.eq">
+        <source>operator.eq</source>
+        <target>равно</target>
+      </trans-unit>
+      <trans-unit id="operator.neq">
+        <source>operator.neq</source>
+        <target>не равно</target>
+      </trans-unit>
+      <trans-unit id="operator.gt">
+        <source>operator.gt</source>
+        <target>больше</target>
+      </trans-unit>
+      <trans-unit id="operator.gte">
+        <source>operator.gte</source>
+        <target>больше или равно</target>
+      </trans-unit>
+      <trans-unit id="operator.lt">
+        <source>operator.lt</source>
+        <target>меньше</target>
+      </trans-unit>
+      <trans-unit id="operator.lte">
+        <source>operator.lte</source>
+        <target>меньше или равно</target>
+      </trans-unit>
+      <trans-unit id="operator.contains">
+        <source>operator.contains</source>
+        <target>содержит</target>
+      </trans-unit>
+      <trans-unit id="operator.checked">
+        <source>operator.checked</source>
+        <target>отмечено</target>
+      </trans-unit>
+      <trans-unit id="operator.unchecked">
+        <source>operator.unchecked</source>
+        <target>не отмечено</target>
+      </trans-unit>
+      <trans-unit id="cv.status.draft">
+        <source>cv.status.draft</source>
+        <target>Черновик</target>
+      </trans-unit>
+      <trans-unit id="cv.status.published">
+        <source>cv.status.published</source>
+        <target>Опубликовано</target>
+      </trans-unit>
+      <trans-unit id="cv.empty">
+        <source>cv.empty</source>
+        <target>Пусто</target>
+      </trans-unit>
+      <trans-unit id="cv.publish_blocked">
+        <source>cv.publish_blocked</source>
+        <target>Пустые поля подсвечены. Публикация недоступна, пока они не заполнены.</target>
+      </trans-unit>
+      <trans-unit id="cv.hidden">
+        <source>cv.hidden</source>
+        <target>Скрыто</target>
+      </trans-unit>
+      <trans-unit id="cv.likes">
+        <source>cv.likes</source>
+        <target>Отметки</target>
+      </trans-unit>
+      <trans-unit id="cv.owner">
+        <source>cv.owner</source>
+        <target>Кандидат</target>
+      </trans-unit>
+      <trans-unit id="cv.projects">
+        <source>cv.projects</source>
+        <target>Проекты</target>
+      </trans-unit>
+      <trans-unit id="cv.none">
+        <source>cv.none</source>
+        <target>CV пока нет.</target>
+      </trans-unit>
+      <trans-unit id="profile.me">
+        <source>profile.me</source>
+        <target>Обо мне</target>
+      </trans-unit>
+      <trans-unit id="profile.info">
+        <source>profile.info</source>
+        <target>Сведения</target>
+      </trans-unit>
+      <trans-unit id="profile.projects">
+        <source>profile.projects</source>
+        <target>Проекты</target>
+      </trans-unit>
+      <trans-unit id="profile.cvs">
+        <source>profile.cvs</source>
+        <target>CV</target>
+      </trans-unit>
+      <trans-unit id="profile.saved">
+        <source>profile.saved</source>
+        <target>Сохранено</target>
+      </trans-unit>
+      <trans-unit id="profile.conflict">
+        <source>profile.conflict</source>
+        <target>Профиль уже сохранил кто-то другой. Обновите страницу и повторите.</target>
+      </trans-unit>
+      <trans-unit id="profile.public">
+        <source>profile.public</source>
+        <target>Публичный профиль</target>
+      </trans-unit>
+      <trans-unit id="project.name">
+        <source>project.name</source>
+        <target>Название проекта</target>
+      </trans-unit>
+      <trans-unit id="project.untitled">
+        <source>project.untitled</source>
+        <target>Без названия</target>
+      </trans-unit>
+
+      <trans-unit id="project.period">
+        <source>project.period</source>
+        <target>Период</target>
+      </trans-unit>
+      <trans-unit id="project.start">
+        <source>project.start</source>
+        <target>Начало</target>
+      </trans-unit>
+      <trans-unit id="project.end">
+        <source>project.end</source>
+        <target>Конец</target>
+      </trans-unit>
+      <trans-unit id="project.description">
+        <source>project.description</source>
+        <target>Описание</target>
+      </trans-unit>
+      <trans-unit id="project.tags">
+        <source>project.tags</source>
+        <target>Теги</target>
+      </trans-unit>
+      <trans-unit id="project.empty">
+        <source>project.empty</source>
+        <target>Проектов пока нет.</target>
+      </trans-unit>
+      <trans-unit id="search.placeholder">
+        <source>search.placeholder</source>
+        <target>Поиск</target>
+      </trans-unit>
+      <trans-unit id="search.empty">
+        <source>search.empty</source>
+        <target>Ничего не найдено.</target>
+      </trans-unit>
+      <trans-unit id="search.positions">
+        <source>search.positions</source>
+        <target>Позиции</target>
+      </trans-unit>
+      <trans-unit id="search.cvs">
+        <source>search.cvs</source>
+        <target>CV</target>
+      </trans-unit>
+      <trans-unit id="stats.cvs24h">
+        <source>stats.cvs24h</source>
+        <target>CV за 24 часа</target>
+      </trans-unit>
+      <trans-unit id="stats.positions">
+        <source>stats.positions</source>
+        <target>Позиции</target>
+      </trans-unit>
+      <trans-unit id="stats.candidates">
+        <source>stats.candidates</source>
+        <target>Кандидаты</target>
+      </trans-unit>
+      <trans-unit id="stats.recruiters">
+        <source>stats.recruiters</source>
+        <target>Рекрутеры</target>
+      </trans-unit>
+      <trans-unit id="stats.cvs">
+        <source>stats.cvs</source>
+        <target>CV</target>
+      </trans-unit>
+      <trans-unit id="home.latest">
+        <source>home.latest</source>
+        <target>Последние позиции</target>
+      </trans-unit>
+      <trans-unit id="home.popular">
+        <source>home.popular</source>
+        <target>Самые популярные позиции</target>
+      </trans-unit>
+      <trans-unit id="home.tags">
+        <source>home.tags</source>
+        <target>Теги технологий</target>
+      </trans-unit>
+      <trans-unit id="user.email">
+        <source>user.email</source>
+        <target>Почта</target>
+      </trans-unit>
+      <trans-unit id="user.roles">
+        <source>user.roles</source>
+        <target>Роли</target>
+      </trans-unit>
+      <trans-unit id="user.blocked">
+        <source>user.blocked</source>
+        <target>Заблокирован</target>
+      </trans-unit>
+      <trans-unit id="user.active">
+        <source>user.active</source>
+        <target>Активен</target>
+      </trans-unit>
+      <trans-unit id="user.confirm_delete">
+        <source>user.confirm_delete</source>
+        <target>Удалить выбранную запись?</target>
+      </trans-unit>
+      <trans-unit id="user.confirm_delete_position">
+        <source>user.confirm_delete_position</source>
+        <target>Удалить выбранную позицию и связанные CV?</target>
+      </trans-unit>
+      <trans-unit id="user.confirm_delete_cv">
+        <source>user.confirm_delete_cv</source>
+        <target>Удалить выбранное CV?</target>
+      </trans-unit>
+      <trans-unit id="user.confirm_delete_attribute">
+        <source>user.confirm_delete_attribute</source>
+        <target>Удалить выбранный атрибут?</target>
+      </trans-unit>
+      <trans-unit id="discussion.placeholder">
+        <source>discussion.placeholder</source>
+        <target>Сообщение</target>
+      </trans-unit>
+      <trans-unit id="discussion.empty">
+        <source>discussion.empty</source>
+        <target>Сообщений пока нет.</target>
+      </trans-unit>
+      <trans-unit id="discussion.post">
+        <source>discussion.post</source>
+        <target>Отправить</target>
+      </trans-unit>
+      <trans-unit id="upload.drop">
+        <source>upload.drop</source>
+        <target>Перетащите изображение или выберите файл.</target>
+      </trans-unit>
+      <trans-unit id="upload.failed">
+        <source>upload.failed</source>
+        <target>Изображение не загрузилось.</target>
+      </trans-unit>
+      <trans-unit id="common.yes">
+        <source>common.yes</source>
+        <target>Да</target>
+      </trans-unit>
+      <trans-unit id="common.no">
+        <source>common.no</source>
+        <target>Нет</target>
+      </trans-unit>
+      <trans-unit id="common.required">
+        <source>common.required</source>
+        <target>Обязательно</target>
+      </trans-unit>
+      <trans-unit id="common.optional">
+        <source>common.optional</source>
+        <target>Необязательно</target>
+      </trans-unit>
+      <trans-unit id="common.actions">
+        <source>common.actions</source>
+        <target>Действия</target>
+      </trans-unit>
+      <trans-unit id="common.select">
+        <source>common.select</source>
+        <target>Выбрать</target>
+      </trans-unit>
+      <trans-unit id="common.back">
+        <source>common.back</source>
+        <target>Назад</target>
+      </trans-unit>
+      <trans-unit id="common.status">
+        <source>common.status</source>
+        <target>Статус</target>
+      </trans-unit>
+      <trans-unit id="common.updated">
+        <source>common.updated</source>
+        <target>Обновлено</target>
+      </trans-unit>
+      <trans-unit id="common.created">
+        <source>common.created</source>
+        <target>Создано</target>
+      </trans-unit>
+      <trans-unit id="common.name">
+        <source>common.name</source>
+        <target>Название</target>
+      </trans-unit>
+      <trans-unit id="common.value">
+        <source>common.value</source>
+        <target>Значение</target>
+      </trans-unit>
+      <trans-unit id="common.none">
+        <source>common.none</source>
+        <target>Нет</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

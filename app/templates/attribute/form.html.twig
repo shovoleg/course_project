@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ attribute.id ? attribute.name : 'action.create'|trans }}{% endblock %}
+
+{% block body %}
+    <h1 class="h3 mb-3">{{ attribute.id ? attribute.name : 'action.create'|trans }}</h1>
+    {% if attribute.builtin %}
+        <div class="alert alert-secondary">{{ 'attribute.builtin'|trans }}</div>
+    {% endif %}
+    {{ form_start(form) }}
+        {{ form_row(form.name) }}
+        {{ form_row(form.description) }}
+        {{ form_row(form.category) }}
+        {{ form_row(form.type) }}
+        {{ form_row(form.optionsText) }}
+        <p class="form-text">{{ 'attribute.options_hint'|trans }}</p>
+        {{ form_row(form.version) }}
+        <button class="btn btn-primary" type="submit">{{ 'action.save'|trans }}</button>
+        <a class="btn btn-outline-secondary" href="{{ path('app_attribute_index') }}">{{ 'common.back'|trans }}</a>
+    {{ form_end(form) }}
+{% endblock %}

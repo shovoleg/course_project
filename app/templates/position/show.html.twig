@@ -1,0 +1,129 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ position.title }}{% endblock %}
+
+{% block body %}
+    <div class="d-flex justify-content-between align-items-start gap-3 mb-3 flex-wrap">
+        <div>
+            <h1 class="h3 mb-1">{{ position.title }}</h1>
+            <div class="text-body-secondary">{{ position.company }} {% if position.level %}· {{ ('position.level.' ~ position.level.value)|trans }}{% endif %}</div>
+        </div>
+        <div class="btn-toolbar gap-2">
+            {% if is_granted('POSITION_EDIT', position) %}
+                <a class="btn btn-outline-primary btn-sm" href="{{ path('app_position_edit', {id: position.id}) }}">{{ 'action.edit'|trans }}</a>
+            {% endif %}
+            {% if canCreate %}
+                <form method="post" action="{{ path('app_cv_create', {id: position.id}) }}">
+                    <input type="hidden" name="_token" data-controller="csrf-protection" value="{{ csrf_token('submit') }}">
+                    <button class="btn btn-primary btn-sm" type="submit">{{ 'position.create_cv'|trans }}</button>
+                </form>
+            {% endif %}
+            {% if ownCv %}
+                <a class="btn btn-primary btn-sm" href="{{ path('app_cv_show', {id: ownCv.id}) }}">{{ 'position.open_cv'|trans }}</a>
+            {% endif %}
+        </div>
+    </div>
+    <ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item"><button class="nav-link active" data-bs-toggle="tab" data-bs-target="#details" type="button">{{ 'position.basic'|trans }}</button></li>
+        {% if is_granted('ROLE_RECRUITER') %}
+            <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#cvs" type="button">{{ 'position.cvs'|trans }}</button></li>
+        {% endif %}
+        <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#discussion" type="button">{{ 'position.discussion'|trans }}</button></li>
+    </ul>
+    <div class="tab-content border border-top-0 rounded-bottom p-3">
+        <div class="tab-pane fade show active" id="details">
+            <div class="mb-3">{{ position.shortDescription|md }}</div>
+            <p><strong>{{ 'position.visibility'|trans }}:</strong> {{ ('position.' ~ position.visibility.value)|trans }}</p>
+            <p><strong>{{ 'position.max_projects'|trans }}:</strong> {{ position.maxProjects }}</p>
+            <p><strong>{{ 'position.tags'|trans }}:</strong>
+                {% for tag in position.projectTags %}
+                    <span class="badge text-bg-secondary">{{ tag.name }}</span>
+                {% else %}
+                    {{ 'common.none'|trans }}
+                {% endfor %}
+            </p>
+            <h2 class="h5">{{ 'position.attributes'|trans }}</h2>
+            <div class="table-responsive">
+                <table class="table table-sm">
+                    <thead>
+                        <tr>
+                            <th>{{ 'attribute.name'|trans }}</th>
+                            <th>{{ 'attribute.category'|trans }}</th>
+                            <th>{{ 'attribute.type'|trans }}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for link in position.positionAttributes %}
+                            <tr>
+                                <td>{{ link.attribute.name }}</td>
+                                <td>{{ ('category.' ~ link.attribute.category.code)|trans }}</td>
+                                <td>{{ ('type.' ~ link.attribute.type.value)|trans }}</td>
+                            </tr>
+                        {% else %}
+                            <tr><td colspan="3">{{ 'attribute.empty'|trans }}</td></tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <h2 class="h5">{{ 'position.rules'|trans }}</h2>
+            {% for rule in position.accessRules %}
+                <div>{{ rule.attribute.name }} · {{ ('operator.' ~ rule.operator.value)|trans }} · {{ rule.comparison }}</div>
+            {% else %}
+                <div class="text-body-secondary">{{ 'position.no_rules'|trans }}</div>
+            {% endfor %}
+        </div>
+        {% if is_granted('ROLE_RECRUITER') %}
+            <div class="tab-pane fade" id="cvs">
+                {% if averages %}
+                    <div class="mb-3">
+                        {% for row in averages %}
+                            <span class="me-3">{{ row.name }}: {{ row.averageValue|number_format(2) }}</span>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+                <div data-controller="table-toolbar">
+                    <button class="btn btn-outline-primary btn-sm mb-2" type="button" data-table-toolbar-target="needsSelection" data-action="table-toolbar#open" data-table-toolbar-url-param="{{ path('app_cv_show', {id: 999999})|replace({'999999': '__id__'}) }}">{{ 'action.view'|trans }}</button>
+                    <div class="table-responsive">
+                        <table class="table align-middle">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>{{ 'cv.owner'|trans }}</th>
+                                    <th>{{ 'common.status'|trans }}</th>
+                                    <th>{{ 'cv.likes'|trans }}</th>
+                                    <th>{{ 'common.updated'|trans }}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for cv in cvs %}
+                                    <tr>
+                                        <td><input type="radio" name="cv" value="{{ cv.id }}" data-table-toolbar-target="row" data-action="change->table-toolbar#refresh"></td>
+                                        <td><a href="{{ path('app_public_profile', {id: cv.owner.id}) }}">{{ names[cv.owner.id]|default(cv.owner.email) }}</a></td>
+                                        <td>{{ ('cv.status.' ~ cv.status.value)|trans }}</td>
+                                        <td>{{ likes[cv.id]|default(0) }}</td>
+                                        <td>{{ cv.updatedAt|date('Y-m-d H:i') }}</td>
+                                    </tr>
+                                {% else %}
+                                    <tr><td colspan="5">{{ 'cv.none'|trans }}</td></tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+        <div class="tab-pane fade" id="discussion" data-controller="discussion" data-discussion-url-value="{{ path('app_position_discussion', {id: position.id}) }}" data-discussion-after-value="{{ posts|last ? posts|last.id : 0 }}">
+            <div data-discussion-target="list">
+                {% include 'position/_posts.html.twig' %}
+            </div>
+            {% if app.user %}
+                {{ form_start(discussionForm, {action: path('app_position_discussion', {id: position.id})}) }}
+                    {{ form_row(discussionForm.body) }}
+                    <button class="btn btn-primary btn-sm" type="submit">{{ 'discussion.post'|trans }}</button>
+                {{ form_end(discussionForm) }}
+            {% else %}
+                <p class="mt-3"><a href="{{ path('app_login') }}">{{ 'nav.login'|trans }}</a></p>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

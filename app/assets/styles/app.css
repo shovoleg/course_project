@@ -1,0 +1,33 @@
+body {
+    min-height: 100vh;
+}
+
+.cv-sheet {
+    max-width: 920px;
+    padding: 2rem;
+    border: 1px solid var(--bs-border-color);
+    border-radius: 0.5rem;
+    background: var(--bs-body-bg);
+}
+
+.cv-empty {
+    background: var(--bs-danger-bg-subtle);
+    color: var(--bs-danger-text-emphasis);
+}
+
+.ts-wrapper {
+    width: 100%;
+}
+
+.ts-wrapper.multi .ts-control > .item,
+.ts-wrapper.multi .ts-control > .item.active {
+    background: var(--bs-body-bg);
+    color: var(--bs-body-color);
+    border: 1px solid var(--bs-border-color);
+}
+
+.ts-wrapper.plugin-remove_button .item .remove,
+.ts-wrapper.plugin-remove_button .item.active .remove {
+    border-left-color: var(--bs-border-color);
+    color: var(--bs-body-color);
+}

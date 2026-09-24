@@ -1,0 +1,95 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ position.id ? 'action.edit'|trans : 'action.create'|trans }}{% endblock %}
+
+{% block body %}
+    <h1 class="h3 mb-3">{{ position.id ? position.title : 'action.create'|trans }}</h1>
+    {{ form_start(form) }}
+        <div class="row g-4">
+            <div class="col-lg-6">
+                {{ form_row(form.title) }}
+                {{ form_row(form.shortDescription) }}
+                {{ form_row(form.company) }}
+                {{ form_row(form.level) }}
+                {{ form_row(form.visibility) }}
+                {{ form_row(form.maxProjects) }}
+                {{ form_row(form.version) }}
+                <label class="form-label">{{ 'position.tags'|trans }}</label>
+                <select name="tags[]" multiple data-controller="tags" data-tags-url-value="{{ path('app_tag_suggest') }}">
+                    {% for tag in position.projectTags %}
+                        <option value="{{ tag.name }}" selected>{{ tag.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="col-lg-6">
+                <div data-controller="attribute-picker" data-attribute-picker-url-value="{{ path('app_attribute_lookup') }}">
+                    <label class="form-label">{{ 'position.attributes'|trans }}</label>
+                    <div class="row g-2 mb-2">
+                        <div class="col-md-5">
+                            <select class="form-select" data-attribute-picker-target="category" data-action="change->attribute-picker#search">
+                                <option value="">{{ 'attribute.category'|trans }}</option>
+                                {% for category in categories %}
+                                    <option value="{{ category.code }}">{{ ('category.' ~ category.code)|trans }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="col-md-7">
+                            <input class="form-control" placeholder="{{ 'attribute.prefix'|trans }}" data-attribute-picker-target="query" data-action="input->attribute-picker#search">
+                        </div>
+                    </div>
+                    <div class="list-group mb-3" data-attribute-picker-target="results"></div>
+                    <div data-attribute-picker-target="selected">
+                        {% for link in position.positionAttributes %}
+                            <div class="d-flex justify-content-between align-items-center border rounded px-2 py-1 mb-1" data-id="{{ link.attribute.id }}">
+                                <input type="hidden" name="attribute_ids[]" value="{{ link.attribute.id }}">
+                                <span>{{ link.attribute.name }}</span>
+                                <button class="btn btn-sm btn-outline-secondary" type="button" data-action="attribute-picker#remove">×</button>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="mt-4" data-controller="access-rules" data-access-rules-attributes-value="{{ catalog|json_encode|e('html_attr') }}" data-access-rules-labels-value="{{ {
+                    eq: 'operator.eq'|trans,
+                    neq: 'operator.neq'|trans,
+                    gt: 'operator.gt'|trans,
+                    gte: 'operator.gte'|trans,
+                    lt: 'operator.lt'|trans,
+                    lte: 'operator.lte'|trans,
+                    contains: 'operator.contains'|trans,
+                    checked: 'operator.checked'|trans,
+                    unchecked: 'operator.unchecked'|trans
+                }|json_encode|e('html_attr') }}">
+                    <label class="form-label">{{ 'position.rules'|trans }}</label>
+                    <p class="form-text">{{ 'position.rule_hint'|trans }}</p>
+                    <div data-access-rules-target="list">
+                        {% for rule in position.accessRules %}
+                            <div class="row g-2 mb-2">
+                                <div class="col-md-4">
+                                    <select class="form-select" name="rules[{{ loop.index0 }}][attribute]" data-action="change->access-rules#refresh">
+                                        {% for item in catalog %}
+                                            <option value="{{ item.id }}" {{ rule.attribute.id == item.id ? 'selected' }}>{{ item.name }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                                <div class="col-md-3">
+                                    <select class="form-select" name="rules[{{ loop.index0 }}][operator]">
+                                        <option value="{{ rule.operator.value }}" selected>{{ ('operator.' ~ rule.operator.value)|trans }}</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-4">
+                                    <input class="form-control" name="rules[{{ loop.index0 }}][value]" value="{{ rule.comparison }}">
+                                </div>
+                                <div class="col-md-1">
+                                    <button class="btn btn-outline-secondary" type="button" data-action="access-rules#remove">×</button>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <button class="btn btn-outline-secondary btn-sm" type="button" data-action="access-rules#add">{{ 'action.add'|trans }}</button>
+                </div>
+            </div>
+        </div>
+        <button class="btn btn-primary mt-3" type="submit">{{ 'action.save'|trans }}</button>
+        <a class="btn btn-outline-secondary mt-3" href="{{ position.id ? path('app_position_show', {id: position.id}) : path('app_position_index') }}">{{ 'common.back'|trans }}</a>
+    {{ form_end(form) }}
+{% endblock %}

@@ -1,0 +1,45 @@
+{% set type = attribute.type.value %}
+<div class="mb-3 {{ empty ? 'cv-empty rounded p-2' : '' }}" data-value-id="{{ attribute.id }}" data-version="{{ value ? value.version : 0 }}" data-type="{{ type }}">
+    <label class="form-label">{{ attribute.name }}</label>
+    {% if attribute.description %}
+        <div class="form-text mb-1">{{ attribute.description }}</div>
+    {% endif %}
+    {% if type == 'string' %}
+        <input class="form-control" data-field="string" value="{{ value ? value.stringValue : '' }}">
+    {% elseif type == 'text' %}
+        <textarea class="form-control" rows="5" data-field="text">{{ value ? value.textValue : '' }}</textarea>
+    {% elseif type == 'numeric' %}
+        <input class="form-control" type="number" step="0.0001" data-field="numeric" value="{{ value and value.numericValue is not null ? value.numericValue : '' }}">
+    {% elseif type == 'date' %}
+        <input class="form-control" type="date" data-field="date" value="{{ value and value.dateValue ? value.dateValue|date('Y-m-d') : '' }}">
+    {% elseif type == 'period' %}
+        <div class="row g-2">
+            <div class="col-md-6"><input class="form-control" type="date" data-field="periodStart" value="{{ value and value.periodStart ? value.periodStart|date('Y-m-d') : '' }}" aria-label="{{ 'project.start'|trans }}"></div>
+            <div class="col-md-6"><input class="form-control" type="date" data-field="periodEnd" value="{{ value and value.periodEnd ? value.periodEnd|date('Y-m-d') : '' }}" aria-label="{{ 'project.end'|trans }}"></div>
+        </div>
+    {% elseif type == 'boolean' %}
+        <select class="form-select" data-field="boolean">
+            <option value="" {{ value is null or value.booleanValue is null ? 'selected' }}>{{ 'common.none'|trans }}</option>
+            <option value="1" {{ value and value.booleanValue is same as(true) ? 'selected' }}>{{ 'common.yes'|trans }}</option>
+            <option value="0" {{ value and value.booleanValue is same as(false) ? 'selected' }}>{{ 'common.no'|trans }}</option>
+        </select>
+    {% elseif type == 'one_of_many' %}
+        <select class="form-select" data-field="optionId">
+            <option value="">{{ 'common.none'|trans }}</option>
+            {% for option in attribute.options %}
+                <option value="{{ option.id }}" {{ value and value.option and value.option.id == option.id ? 'selected' }}>{{ option.label }}</option>
+            {% endfor %}
+        </select>
+    {% elseif type == 'image' %}
+        <div data-controller="image-drop" data-image-drop-upload-url-value="{{ path('app_upload_image') }}" data-failed="{{ 'upload.failed'|trans }}">
+            <div class="border rounded p-3 text-center" data-action="dragover->image-drop#dragover drop->image-drop#drop">
+                <img src="{{ value and value.imageUrl ? value.imageUrl : '' }}" alt="" class="img-fluid mb-2 {{ value and value.imageUrl ? '' : 'd-none' }}" data-image-drop-target="preview" style="max-height: 180px">
+                <div>{{ 'upload.drop'|trans }}</div>
+                <input type="file" accept="image/*" class="form-control mt-2" data-action="change->image-drop#choose">
+                <div class="small text-danger mt-2" data-image-drop-target="status"></div>
+            </div>
+            <input type="hidden" data-field="imageUrl" value="{{ value and value.imageUrl ? value.imageUrl : '' }}" data-image-drop-target="url">
+            <input type="hidden" data-field="imagePublicId" value="{{ value and value.imagePublicId ? value.imagePublicId : '' }}" data-image-drop-target="publicId">
+        </div>
+    {% endif %}
+</div>

@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ 'nav.library'|trans }}{% endblock %}
+
+{% block body %}
+    <div data-controller="table-toolbar">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h1 class="h3 mb-0">{{ 'nav.library'|trans }}</h1>
+            <div class="btn-toolbar gap-2">
+                <a class="btn btn-primary btn-sm" href="{{ path('app_attribute_new') }}">{{ 'action.create'|trans }}</a>
+                <button class="btn btn-outline-primary btn-sm" type="button" data-table-toolbar-target="needsSelection" data-action="table-toolbar#open" data-table-toolbar-url-param="{{ path('app_attribute_edit', {id: 999999})|replace({'999999': '__id__'}) }}">{{ 'action.edit'|trans }}</button>
+                <form method="post" data-action-template="{{ path('app_attribute_delete', {id: 999999})|replace({'999999': '__id__'}) }}" data-confirm="{{ 'user.confirm_delete_attribute'|trans }}">
+                    <input type="hidden" name="_token" data-controller="csrf-protection" value="{{ csrf_token('submit') }}">
+                    <input type="hidden" name="version">
+                    <button class="btn btn-outline-danger btn-sm" data-table-toolbar-target="needsSelection" data-action="table-toolbar#assign">{{ 'action.delete'|trans }}</button>
+                </form>
+            </div>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-hover align-middle">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>{{ 'attribute.name'|trans }}</th>
+                        <th>{{ 'attribute.category'|trans }}</th>
+                        <th>{{ 'attribute.type'|trans }}</th>
+                        <th>{{ 'attribute.builtin'|trans }}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for attribute in attributes %}
+                        <tr>
+                            <td><input type="radio" name="selected" value="{{ attribute.id }}" data-version="{{ attribute.version }}" data-table-toolbar-target="row" data-action="change->table-toolbar#refresh"></td>
+                            <td>{{ attribute.name }}</td>
+                            <td>{{ ('category.' ~ attribute.category.code)|trans }}</td>
+                            <td>{{ ('type.' ~ attribute.type.value)|trans }}</td>
+                            <td>{{ attribute.builtin ? 'common.yes'|trans : 'common.no'|trans }}</td>
+                        </tr>
+                    {% else %}
+                        <tr><td colspan="5">{{ 'attribute.empty'|trans }}</td></tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}

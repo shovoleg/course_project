@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="{{ app.request.locale }}" data-bs-theme="{{ app.user ? app.user.theme : app.session.get('theme', 'light') }}">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="csrf-token" content="{{ csrf_token('submit') }}">
+        <title>{% block title %}{% endblock %}</title>
+        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22 fill=%22%23ff8c00%22>CV</text></svg>">
+        {% block stylesheets %}{% endblock %}
+        {% block javascripts %}
+            {% block importmap %}{{ importmap('app') }}{% endblock %}
+        {% endblock %}
+    </head>
+    <body data-turbo="false">
+        <nav class="navbar navbar-expand-lg border-bottom mb-4">
+            <div class="container">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main-nav" aria-controls="main-nav" aria-expanded="false" aria-label="{{ 'nav.menu'|trans }}">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="main-nav">
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item"><a class="nav-link" href="{{ path('app_home') }}">{{ 'nav.home'|trans }}</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ path('app_position_index') }}">{{ 'nav.positions'|trans }}</a></li>
+                        {% if is_granted('ROLE_RECRUITER') %}
+                            <li class="nav-item"><a class="nav-link" href="{{ path('app_attribute_index') }}">{{ 'nav.library'|trans }}</a></li>
+                        {% endif %}
+                        {% if is_granted('ROLE_USER') %}
+                            <li class="nav-item"><a class="nav-link" href="{{ path('app_profile') }}">{{ 'nav.profile'|trans }}</a></li>
+                        {% endif %}
+                        {% if is_granted('ROLE_ADMIN') %}
+                            <li class="nav-item"><a class="nav-link" href="{{ path('app_admin_users') }}">{{ 'nav.users'|trans }}</a></li>
+                        {% endif %}
+                    </ul>
+                    <form class="d-flex me-3 my-2 my-lg-0" method="get" action="{{ path('app_search') }}" role="search">
+                        <input class="form-control form-control-sm" type="search" name="q" value="{{ app.request.query.get('q') }}" placeholder="{{ 'search.placeholder'|trans }}" aria-label="{{ 'search.placeholder'|trans }}">
+                    </form>
+                    <div class="d-flex align-items-center gap-2 flex-wrap">
+                        <div class="btn-group btn-group-sm" role="group" aria-label="{{ 'nav.language'|trans }}">
+                            <a class="btn btn-outline-secondary {{ app.request.locale == 'en' ? 'active' : '' }}" href="{{ path('app_locale', {locale: 'en'}) }}">EN</a>
+                            <a class="btn btn-outline-secondary {{ app.request.locale == 'ru' ? 'active' : '' }}" href="{{ path('app_locale', {locale: 'ru'}) }}">RU</a>
+                        </div>
+                        <form method="post" action="{{ path('app_theme') }}">
+                            <input type="hidden" name="_token" data-controller="csrf-protection" value="{{ csrf_token('submit') }}">
+                            <input type="hidden" name="theme" value="{{ (app.user ? app.user.theme : app.session.get('theme', 'light')) == 'dark' ? 'light' : 'dark' }}">
+                            <button class="btn btn-outline-secondary btn-sm" type="submit">{{ ((app.user ? app.user.theme : app.session.get('theme', 'light')) == 'dark' ? 'theme.light' : 'theme.dark')|trans }}</button>
+                        </form>
+                        {% if app.user %}
+                            <form method="post" action="{{ path('app_logout') }}">
+                                <input type="hidden" name="_csrf_token" data-controller="csrf-protection" value="{{ csrf_token('logout') }}">
+                                <button class="btn btn-outline-secondary btn-sm" type="submit">{{ 'nav.logout'|trans }}</button>
+                            </form>
+                        {% else %}
+                            <a class="btn btn-outline-primary btn-sm" href="{{ path('app_login') }}">{{ 'nav.login'|trans }}</a>
+                            <a class="btn btn-primary btn-sm" href="{{ path('app_register') }}">{{ 'nav.register'|trans }}</a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <main class="container pb-5">
+            {% for type, messages in app.flashes %}
+                {% for message in messages %}
+                    <div class="alert alert-{{ type == 'danger' ? 'danger' : (type == 'warning' ? 'warning' : 'success') }}">{{ message|trans }}</div>
+                {% endfor %}
+            {% endfor %}
+            {% block body %}{% endblock %}
+        </main>
+    </body>
+</html>

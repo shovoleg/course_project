@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ name }}{% endblock %}
+
+{% block body %}
+    <div class="d-flex gap-3 align-items-center mb-4">
+        {% if photo %}
+            <img src="{{ photo }}" alt="" class="rounded-circle" style="width: 96px; height: 96px; object-fit: cover">
+        {% endif %}
+        <div>
+            <h1 class="h3 mb-1">{{ name }}</h1>
+            <div class="text-body-secondary">{{ location }}</div>
+            {% if is_granted('PROFILE_EDIT', profile) %}
+                <a href="{{ path('app_profile_show', {id: profile.id}) }}">{{ 'action.edit'|trans }}</a>
+            {% endif %}
+        </div>
+    </div>
+    <h2 class="h5">{{ 'profile.cvs'|trans }}</h2>
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>{{ 'position.title'|trans }}</th>
+                    <th>{{ 'common.status'|trans }}</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for cv in cvs %}
+                    <tr>
+                        <td><a href="{{ path('app_cv_show', {id: cv.id}) }}">{{ cv.position.title }}</a></td>
+                        <td>{{ ('cv.status.' ~ cv.status.value)|trans }}</td>
+                    </tr>
+                {% else %}
+                    <tr><td colspan="2">{{ 'cv.none'|trans }}</td></tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

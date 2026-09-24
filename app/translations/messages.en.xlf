@@ -1,0 +1,796 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" datatype="plaintext" original="messages">
+    <body>
+      <trans-unit id="app.name">
+        <source>app.name</source>
+        <target>CV Platform</target>
+      </trans-unit>
+      <trans-unit id="nav.home">
+        <source>nav.home</source>
+        <target>Home</target>
+      </trans-unit>
+      <trans-unit id="nav.positions">
+        <source>nav.positions</source>
+        <target>Positions</target>
+      </trans-unit>
+      <trans-unit id="nav.library">
+        <source>nav.library</source>
+        <target>Library</target>
+      </trans-unit>
+      <trans-unit id="nav.profile">
+        <source>nav.profile</source>
+        <target>Profile</target>
+      </trans-unit>
+      <trans-unit id="nav.users">
+        <source>nav.users</source>
+        <target>Users</target>
+      </trans-unit>
+      <trans-unit id="nav.login">
+        <source>nav.login</source>
+        <target>Sign in</target>
+      </trans-unit>
+      <trans-unit id="nav.register">
+        <source>nav.register</source>
+        <target>Register</target>
+      </trans-unit>
+      <trans-unit id="nav.logout">
+        <source>nav.logout</source>
+        <target>Sign out</target>
+      </trans-unit>
+      <trans-unit id="nav.search">
+        <source>nav.search</source>
+        <target>Search</target>
+      </trans-unit>
+      <trans-unit id="nav.language">
+        <source>nav.language</source>
+        <target>Language</target>
+      </trans-unit>
+      <trans-unit id="nav.theme">
+        <source>nav.theme</source>
+        <target>Theme</target>
+      </trans-unit>
+      <trans-unit id="nav.menu">
+        <source>nav.menu</source>
+        <target>Menu</target>
+      </trans-unit>
+      <trans-unit id="action.view">
+        <source>action.view</source>
+        <target>View</target>
+      </trans-unit>
+      <trans-unit id="action.create">
+        <source>action.create</source>
+        <target>Create</target>
+      </trans-unit>
+      <trans-unit id="action.edit">
+        <source>action.edit</source>
+        <target>Edit</target>
+      </trans-unit>
+      <trans-unit id="action.duplicate">
+        <source>action.duplicate</source>
+        <target>Duplicate</target>
+      </trans-unit>
+      <trans-unit id="action.delete">
+        <source>action.delete</source>
+        <target>Delete</target>
+      </trans-unit>
+      <trans-unit id="action.publish">
+        <source>action.publish</source>
+        <target>Publish</target>
+      </trans-unit>
+      <trans-unit id="action.like">
+        <source>action.like</source>
+        <target>Like</target>
+      </trans-unit>
+      <trans-unit id="action.unlike">
+        <source>action.unlike</source>
+        <target>Remove like</target>
+      </trans-unit>
+      <trans-unit id="action.save">
+        <source>action.save</source>
+        <target>Save</target>
+      </trans-unit>
+      <trans-unit id="action.add">
+        <source>action.add</source>
+        <target>Add</target>
+      </trans-unit>
+      <trans-unit id="action.remove">
+        <source>action.remove</source>
+        <target>Remove</target>
+      </trans-unit>
+      <trans-unit id="action.reload">
+        <source>action.reload</source>
+        <target>Reload</target>
+      </trans-unit>
+      <trans-unit id="action.block">
+        <source>action.block</source>
+        <target>Block</target>
+      </trans-unit>
+      <trans-unit id="action.unblock">
+        <source>action.unblock</source>
+        <target>Unblock</target>
+      </trans-unit>
+      <trans-unit id="action.roles">
+        <source>action.roles</source>
+        <target>Roles</target>
+      </trans-unit>
+      <trans-unit id="action.open">
+        <source>action.open</source>
+        <target>Open</target>
+      </trans-unit>
+      <trans-unit id="role.candidate">
+        <source>role.candidate</source>
+        <target>Candidate</target>
+      </trans-unit>
+      <trans-unit id="role.recruiter">
+        <source>role.recruiter</source>
+        <target>Recruiter</target>
+      </trans-unit>
+      <trans-unit id="role.admin">
+        <source>role.admin</source>
+        <target>Administrator</target>
+      </trans-unit>
+      <trans-unit id="theme.light">
+        <source>theme.light</source>
+        <target>Light</target>
+      </trans-unit>
+      <trans-unit id="theme.dark">
+        <source>theme.dark</source>
+        <target>Dark</target>
+      </trans-unit>
+      <trans-unit id="auth.email">
+        <source>auth.email</source>
+        <target>Email</target>
+      </trans-unit>
+      <trans-unit id="auth.password">
+        <source>auth.password</source>
+        <target>Password</target>
+      </trans-unit>
+      <trans-unit id="auth.password_repeat">
+        <source>auth.password_repeat</source>
+        <target>Repeat password</target>
+      </trans-unit>
+      <trans-unit id="auth.login">
+        <source>auth.login</source>
+        <target>Sign in</target>
+      </trans-unit>
+      <trans-unit id="auth.register">
+        <source>auth.register</source>
+        <target>Register</target>
+      </trans-unit>
+      <trans-unit id="auth.google">
+        <source>auth.google</source>
+        <target>Continue with Google</target>
+      </trans-unit>
+      <trans-unit id="auth.github">
+        <source>auth.github</source>
+        <target>Continue with GitHub</target>
+      </trans-unit>
+      <trans-unit id="auth.blocked">
+        <source>auth.blocked</source>
+        <target>This account is blocked.</target>
+      </trans-unit>
+      <trans-unit id="auth.invalid">
+        <source>auth.invalid</source>
+        <target>Invalid email or password.</target>
+      </trans-unit>
+      <trans-unit id="auth.oauth_unconfigured">
+        <source>auth.oauth_unconfigured</source>
+        <target>Social login is not configured yet. Email and password still work.</target>
+      </trans-unit>
+      <trans-unit id="auth.oauth_failed">
+        <source>auth.oauth_failed</source>
+        <target>Social login failed. Try again or use email and password.</target>
+      </trans-unit>
+      <trans-unit id="auth.no_email">
+        <source>auth.no_email</source>
+        <target>The social account did not provide an email address.</target>
+      </trans-unit>
+      <trans-unit id="auth.have_account">
+        <source>auth.have_account</source>
+        <target>Already have an account? Sign in.</target>
+      </trans-unit>
+      <trans-unit id="auth.no_account">
+        <source>auth.no_account</source>
+        <target>No account yet? Register.</target>
+      </trans-unit>
+      <trans-unit id="flash.saved">
+        <source>flash.saved</source>
+        <target>Saved.</target>
+      </trans-unit>
+      <trans-unit id="flash.deleted">
+        <source>flash.deleted</source>
+        <target>Deleted.</target>
+      </trans-unit>
+      <trans-unit id="flash.published">
+        <source>flash.published</source>
+        <target>CV published.</target>
+      </trans-unit>
+      <trans-unit id="flash.created">
+        <source>flash.created</source>
+        <target>Created.</target>
+      </trans-unit>
+      <trans-unit id="flash.duplicated">
+        <source>flash.duplicated</source>
+        <target>Position duplicated.</target>
+      </trans-unit>
+      <trans-unit id="flash.registered">
+        <source>flash.registered</source>
+        <target>Account created. You can sign in.</target>
+      </trans-unit>
+      <trans-unit id="flash.blocked">
+        <source>flash.blocked</source>
+        <target>User blocked.</target>
+      </trans-unit>
+      <trans-unit id="flash.unblocked">
+        <source>flash.unblocked</source>
+        <target>User unblocked.</target>
+      </trans-unit>
+      <trans-unit id="flash.roles_saved">
+        <source>flash.roles_saved</source>
+        <target>Roles saved.</target>
+      </trans-unit>
+      <trans-unit id="flash.conflict">
+        <source>flash.conflict</source>
+        <target>The record was changed by someone else. Reload and try again.</target>
+      </trans-unit>
+      <trans-unit id="flash.attribute_added">
+        <source>flash.attribute_added</source>
+        <target>Attribute added to the profile.</target>
+      </trans-unit>
+      <trans-unit id="flash.attribute_removed">
+        <source>flash.attribute_removed</source>
+        <target>Attribute removed from the profile.</target>
+      </trans-unit>
+      <trans-unit id="flash.liked">
+        <source>flash.liked</source>
+        <target>Like saved.</target>
+      </trans-unit>
+      <trans-unit id="flash.unliked">
+        <source>flash.unliked</source>
+        <target>Like removed.</target>
+      </trans-unit>
+      <trans-unit id="error.version_conflict">
+        <source>error.version_conflict</source>
+        <target>The record was changed by someone else. Reload and try again.</target>
+      </trans-unit>
+      <trans-unit id="error.access_denied">
+        <source>error.access_denied</source>
+        <target>You do not have access to this page.</target>
+      </trans-unit>
+      <trans-unit id="error.imgbb_key">
+        <source>error.imgbb_key</source>
+        <target>The ImgBB key is invalid. Open api.imgbb.com and copy the key again.</target>
+      </trans-unit>
+      <trans-unit id="error.cloud_missing">
+        <source>error.cloud_missing</source>
+        <target>Image storage is not configured. Register at imgbb.com, open api.imgbb.com and put the key in app/.env.</target>
+      </trans-unit>
+      <trans-unit id="error.not_complete">
+        <source>error.not_complete</source>
+        <target>Fill every highlighted field before publishing.</target>
+      </trans-unit>
+      <trans-unit id="error.already_exists">
+        <source>error.already_exists</source>
+        <target>This record already exists.</target>
+      </trans-unit>
+      <trans-unit id="error.builtin">
+        <source>error.builtin</source>
+        <target>Built-in attributes cannot be removed.</target>
+      </trans-unit>
+      <trans-unit id="error.invalid">
+        <source>error.invalid</source>
+        <target>The request could not be completed.</target>
+      </trans-unit>
+      <trans-unit id="error.select_row">
+        <source>error.select_row</source>
+        <target>Select a row first.</target>
+      </trans-unit>
+      <trans-unit id="position.title">
+        <source>position.title</source>
+        <target>Title</target>
+      </trans-unit>
+      <trans-unit id="position.description">
+        <source>position.description</source>
+        <target>Short description</target>
+      </trans-unit>
+      <trans-unit id="position.visibility">
+        <source>position.visibility</source>
+        <target>Visibility</target>
+      </trans-unit>
+      <trans-unit id="position.public">
+        <source>position.public</source>
+        <target>Public</target>
+      </trans-unit>
+      <trans-unit id="position.restricted">
+        <source>position.restricted</source>
+        <target>Restricted</target>
+      </trans-unit>
+      <trans-unit id="position.max_projects">
+        <source>position.max_projects</source>
+        <target>Maximum projects</target>
+      </trans-unit>
+      <trans-unit id="position.company">
+        <source>position.company</source>
+        <target>Company</target>
+      </trans-unit>
+      <trans-unit id="position.level">
+        <source>position.level</source>
+        <target>Level</target>
+      </trans-unit>
+      <trans-unit id="position.attributes">
+        <source>position.attributes</source>
+        <target>Attributes</target>
+      </trans-unit>
+      <trans-unit id="position.tags">
+        <source>position.tags</source>
+        <target>Project tags</target>
+      </trans-unit>
+      <trans-unit id="position.rules">
+        <source>position.rules</source>
+        <target>Access rules</target>
+      </trans-unit>
+      <trans-unit id="position.cvs">
+        <source>position.cvs</source>
+        <target>CVs</target>
+      </trans-unit>
+      <trans-unit id="position.discussion">
+        <source>position.discussion</source>
+        <target>Discussion</target>
+      </trans-unit>
+      <trans-unit id="position.updated">
+        <source>position.updated</source>
+        <target>Updated</target>
+      </trans-unit>
+      <trans-unit id="position.empty">
+        <source>position.empty</source>
+        <target>No positions yet.</target>
+      </trans-unit>
+      <trans-unit id="position.level.junior">
+        <source>position.level.junior</source>
+        <target>Junior</target>
+      </trans-unit>
+      <trans-unit id="position.level.middle">
+        <source>position.level.middle</source>
+        <target>Middle</target>
+      </trans-unit>
+      <trans-unit id="position.level.senior">
+        <source>position.level.senior</source>
+        <target>Senior</target>
+      </trans-unit>
+      <trans-unit id="position.level.c_level">
+        <source>position.level.c_level</source>
+        <target>C-level</target>
+      </trans-unit>
+      <trans-unit id="position.copy_of">
+        <source>position.copy_of</source>
+        <target>Copy of %title%</target>
+      </trans-unit>
+      <trans-unit id="position.basic">
+        <source>position.basic</source>
+        <target>Details</target>
+      </trans-unit>
+      <trans-unit id="position.filters">
+        <source>position.filters</source>
+        <target>Filter</target>
+      </trans-unit>
+      <trans-unit id="position.all_levels">
+        <source>position.all_levels</source>
+        <target>All levels</target>
+      </trans-unit>
+      <trans-unit id="position.cv_count">
+        <source>position.cv_count</source>
+        <target>CVs</target>
+      </trans-unit>
+      <trans-unit id="position.no_rules">
+        <source>position.no_rules</source>
+        <target>No access rules.</target>
+      </trans-unit>
+      <trans-unit id="position.rule_hint">
+        <source>position.rule_hint</source>
+        <target>Restricted positions are visible only when every rule matches.</target>
+      </trans-unit>
+      <trans-unit id="position.access">
+        <source>position.access</source>
+        <target>Access</target>
+      </trans-unit>
+      <trans-unit id="position.create_cv">
+        <source>position.create_cv</source>
+        <target>Create CV</target>
+      </trans-unit>
+      <trans-unit id="position.open_cv">
+        <source>position.open_cv</source>
+        <target>Open my CV</target>
+      </trans-unit>
+      <trans-unit id="attribute.name">
+        <source>attribute.name</source>
+        <target>Name</target>
+      </trans-unit>
+      <trans-unit id="attribute.category">
+        <source>attribute.category</source>
+        <target>Category</target>
+      </trans-unit>
+      <trans-unit id="attribute.type">
+        <source>attribute.type</source>
+        <target>Type</target>
+      </trans-unit>
+      <trans-unit id="attribute.description">
+        <source>attribute.description</source>
+        <target>Description</target>
+      </trans-unit>
+      <trans-unit id="attribute.builtin">
+        <source>attribute.builtin</source>
+        <target>Built-in</target>
+      </trans-unit>
+      <trans-unit id="attribute.options">
+        <source>attribute.options</source>
+        <target>Dropdown options</target>
+      </trans-unit>
+      <trans-unit id="attribute.options_hint">
+        <source>attribute.options_hint</source>
+        <target>One option per line. Used only for the dropdown type.</target>
+      </trans-unit>
+      <trans-unit id="attribute.empty">
+        <source>attribute.empty</source>
+        <target>No attributes yet.</target>
+      </trans-unit>
+      <trans-unit id="attribute.recent">
+        <source>attribute.recent</source>
+        <target>Recently used</target>
+      </trans-unit>
+      <trans-unit id="attribute.lookup">
+        <source>attribute.lookup</source>
+        <target>Find an attribute</target>
+      </trans-unit>
+      <trans-unit id="attribute.prefix">
+        <source>attribute.prefix</source>
+        <target>Start typing a name</target>
+      </trans-unit>
+      <trans-unit id="type.string">
+        <source>type.string</source>
+        <target>String</target>
+      </trans-unit>
+      <trans-unit id="type.text">
+        <source>type.text</source>
+        <target>Text</target>
+      </trans-unit>
+      <trans-unit id="type.image">
+        <source>type.image</source>
+        <target>Image</target>
+      </trans-unit>
+      <trans-unit id="type.numeric">
+        <source>type.numeric</source>
+        <target>Numeric</target>
+      </trans-unit>
+      <trans-unit id="type.date">
+        <source>type.date</source>
+        <target>Date</target>
+      </trans-unit>
+      <trans-unit id="type.period">
+        <source>type.period</source>
+        <target>Period</target>
+      </trans-unit>
+      <trans-unit id="type.boolean">
+        <source>type.boolean</source>
+        <target>Boolean</target>
+      </trans-unit>
+      <trans-unit id="type.one_of_many">
+        <source>type.one_of_many</source>
+        <target>One of many</target>
+      </trans-unit>
+      <trans-unit id="category.personal_information">
+        <source>category.personal_information</source>
+        <target>Personal information</target>
+      </trans-unit>
+      <trans-unit id="category.certification">
+        <source>category.certification</source>
+        <target>Certification</target>
+      </trans-unit>
+      <trans-unit id="category.domain_knowledge">
+        <source>category.domain_knowledge</source>
+        <target>Domain knowledge</target>
+      </trans-unit>
+      <trans-unit id="category.soft_skills">
+        <source>category.soft_skills</source>
+        <target>Soft skills</target>
+      </trans-unit>
+      <trans-unit id="category.education">
+        <source>category.education</source>
+        <target>Education</target>
+      </trans-unit>
+      <trans-unit id="category.languages">
+        <source>category.languages</source>
+        <target>Languages</target>
+      </trans-unit>
+      <trans-unit id="category.other">
+        <source>category.other</source>
+        <target>Other</target>
+      </trans-unit>
+      <trans-unit id="operator.eq">
+        <source>operator.eq</source>
+        <target>equals</target>
+      </trans-unit>
+      <trans-unit id="operator.neq">
+        <source>operator.neq</source>
+        <target>does not equal</target>
+      </trans-unit>
+      <trans-unit id="operator.gt">
+        <source>operator.gt</source>
+        <target>greater than</target>
+      </trans-unit>
+      <trans-unit id="operator.gte">
+        <source>operator.gte</source>
+        <target>greater or equal</target>
+      </trans-unit>
+      <trans-unit id="operator.lt">
+        <source>operator.lt</source>
+        <target>less than</target>
+      </trans-unit>
+      <trans-unit id="operator.lte">
+        <source>operator.lte</source>
+        <target>less or equal</target>
+      </trans-unit>
+      <trans-unit id="operator.contains">
+        <source>operator.contains</source>
+        <target>contains</target>
+      </trans-unit>
+      <trans-unit id="operator.checked">
+        <source>operator.checked</source>
+        <target>is checked</target>
+      </trans-unit>
+      <trans-unit id="operator.unchecked">
+        <source>operator.unchecked</source>
+        <target>is not checked</target>
+      </trans-unit>
+      <trans-unit id="cv.status.draft">
+        <source>cv.status.draft</source>
+        <target>Draft</target>
+      </trans-unit>
+      <trans-unit id="cv.status.published">
+        <source>cv.status.published</source>
+        <target>Published</target>
+      </trans-unit>
+      <trans-unit id="cv.empty">
+        <source>cv.empty</source>
+        <target>Empty</target>
+      </trans-unit>
+      <trans-unit id="cv.publish_blocked">
+        <source>cv.publish_blocked</source>
+        <target>Empty fields are highlighted. Publishing stays disabled until they are filled.</target>
+      </trans-unit>
+      <trans-unit id="cv.hidden">
+        <source>cv.hidden</source>
+        <target>Hidden</target>
+      </trans-unit>
+      <trans-unit id="cv.likes">
+        <source>cv.likes</source>
+        <target>Likes</target>
+      </trans-unit>
+      <trans-unit id="cv.owner">
+        <source>cv.owner</source>
+        <target>Candidate</target>
+      </trans-unit>
+      <trans-unit id="cv.projects">
+        <source>cv.projects</source>
+        <target>Projects</target>
+      </trans-unit>
+      <trans-unit id="cv.none">
+        <source>cv.none</source>
+        <target>No CVs yet.</target>
+      </trans-unit>
+      <trans-unit id="profile.me">
+        <source>profile.me</source>
+        <target>Me</target>
+      </trans-unit>
+      <trans-unit id="profile.info">
+        <source>profile.info</source>
+        <target>Info</target>
+      </trans-unit>
+      <trans-unit id="profile.projects">
+        <source>profile.projects</source>
+        <target>Projects</target>
+      </trans-unit>
+      <trans-unit id="profile.cvs">
+        <source>profile.cvs</source>
+        <target>CVs</target>
+      </trans-unit>
+      <trans-unit id="profile.saved">
+        <source>profile.saved</source>
+        <target>Saved</target>
+      </trans-unit>
+      <trans-unit id="profile.conflict">
+        <source>profile.conflict</source>
+        <target>Someone else saved this profile. Reload the page and try again.</target>
+      </trans-unit>
+      <trans-unit id="profile.public">
+        <source>profile.public</source>
+        <target>Public profile</target>
+      </trans-unit>
+      <trans-unit id="project.name">
+        <source>project.name</source>
+        <target>Project name</target>
+      </trans-unit>
+      <trans-unit id="project.untitled">
+        <source>project.untitled</source>
+        <target>Untitled</target>
+      </trans-unit>
+
+      <trans-unit id="project.period">
+        <source>project.period</source>
+        <target>Period</target>
+      </trans-unit>
+      <trans-unit id="project.start">
+        <source>project.start</source>
+        <target>Start</target>
+      </trans-unit>
+      <trans-unit id="project.end">
+        <source>project.end</source>
+        <target>End</target>
+      </trans-unit>
+      <trans-unit id="project.description">
+        <source>project.description</source>
+        <target>Description</target>
+      </trans-unit>
+      <trans-unit id="project.tags">
+        <source>project.tags</source>
+        <target>Tags</target>
+      </trans-unit>
+      <trans-unit id="project.empty">
+        <source>project.empty</source>
+        <target>No projects yet.</target>
+      </trans-unit>
+      <trans-unit id="search.placeholder">
+        <source>search.placeholder</source>
+        <target>Search</target>
+      </trans-unit>
+      <trans-unit id="search.empty">
+        <source>search.empty</source>
+        <target>Nothing found.</target>
+      </trans-unit>
+      <trans-unit id="search.positions">
+        <source>search.positions</source>
+        <target>Positions</target>
+      </trans-unit>
+      <trans-unit id="search.cvs">
+        <source>search.cvs</source>
+        <target>CVs</target>
+      </trans-unit>
+      <trans-unit id="stats.cvs24h">
+        <source>stats.cvs24h</source>
+        <target>CVs in 24 hours</target>
+      </trans-unit>
+      <trans-unit id="stats.positions">
+        <source>stats.positions</source>
+        <target>Positions</target>
+      </trans-unit>
+      <trans-unit id="stats.candidates">
+        <source>stats.candidates</source>
+        <target>Candidates</target>
+      </trans-unit>
+      <trans-unit id="stats.recruiters">
+        <source>stats.recruiters</source>
+        <target>Recruiters</target>
+      </trans-unit>
+      <trans-unit id="stats.cvs">
+        <source>stats.cvs</source>
+        <target>CVs</target>
+      </trans-unit>
+      <trans-unit id="home.latest">
+        <source>home.latest</source>
+        <target>Latest positions</target>
+      </trans-unit>
+      <trans-unit id="home.popular">
+        <source>home.popular</source>
+        <target>Most popular positions</target>
+      </trans-unit>
+      <trans-unit id="home.tags">
+        <source>home.tags</source>
+        <target>Technology tags</target>
+      </trans-unit>
+      <trans-unit id="user.email">
+        <source>user.email</source>
+        <target>Email</target>
+      </trans-unit>
+      <trans-unit id="user.roles">
+        <source>user.roles</source>
+        <target>Roles</target>
+      </trans-unit>
+      <trans-unit id="user.blocked">
+        <source>user.blocked</source>
+        <target>Blocked</target>
+      </trans-unit>
+      <trans-unit id="user.active">
+        <source>user.active</source>
+        <target>Active</target>
+      </trans-unit>
+      <trans-unit id="user.confirm_delete">
+        <source>user.confirm_delete</source>
+        <target>Delete the selected record?</target>
+      </trans-unit>
+      <trans-unit id="user.confirm_delete_position">
+        <source>user.confirm_delete_position</source>
+        <target>Delete the selected position and its CVs?</target>
+      </trans-unit>
+      <trans-unit id="user.confirm_delete_cv">
+        <source>user.confirm_delete_cv</source>
+        <target>Delete the selected CV?</target>
+      </trans-unit>
+      <trans-unit id="user.confirm_delete_attribute">
+        <source>user.confirm_delete_attribute</source>
+        <target>Delete the selected attribute?</target>
+      </trans-unit>
+      <trans-unit id="discussion.placeholder">
+        <source>discussion.placeholder</source>
+        <target>Message</target>
+      </trans-unit>
+      <trans-unit id="discussion.empty">
+        <source>discussion.empty</source>
+        <target>No messages yet.</target>
+      </trans-unit>
+      <trans-unit id="discussion.post">
+        <source>discussion.post</source>
+        <target>Post</target>
+      </trans-unit>
+      <trans-unit id="upload.drop">
+        <source>upload.drop</source>
+        <target>Drop an image here or choose a file.</target>
+      </trans-unit>
+      <trans-unit id="upload.failed">
+        <source>upload.failed</source>
+        <target>The image could not be uploaded.</target>
+      </trans-unit>
+      <trans-unit id="common.yes">
+        <source>common.yes</source>
+        <target>Yes</target>
+      </trans-unit>
+      <trans-unit id="common.no">
+        <source>common.no</source>
+        <target>No</target>
+      </trans-unit>
+      <trans-unit id="common.required">
+        <source>common.required</source>
+        <target>Required</target>
+      </trans-unit>
+      <trans-unit id="common.optional">
+        <source>common.optional</source>
+        <target>Optional</target>
+      </trans-unit>
+      <trans-unit id="common.actions">
+        <source>common.actions</source>
+        <target>Actions</target>
+      </trans-unit>
+      <trans-unit id="common.select">
+        <source>common.select</source>
+        <target>Select</target>
+      </trans-unit>
+      <trans-unit id="common.back">
+        <source>common.back</source>
+        <target>Back</target>
+      </trans-unit>
+      <trans-unit id="common.status">
+        <source>common.status</source>
+        <target>Status</target>
+      </trans-unit>
+      <trans-unit id="common.updated">
+        <source>common.updated</source>
+        <target>Updated</target>
+      </trans-unit>
+      <trans-unit id="common.created">
+        <source>common.created</source>
+        <target>Created</target>
+      </trans-unit>
+      <trans-unit id="common.name">
+        <source>common.name</source>
+        <target>Name</target>
+      </trans-unit>
+      <trans-unit id="common.value">
+        <source>common.value</source>
+        <target>Value</target>
+      </trans-unit>
+      <trans-unit id="common.none">
+        <source>common.none</source>
+        <target>None</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
