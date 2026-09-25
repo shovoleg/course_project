@@ -37,8 +37,9 @@ final class CvController extends AbstractController
             throw $this->createAccessDeniedException();
         }
         $owner = $user;
-        if ($this->isGranted('ROLE_ADMIN') && $request->request->getInt('owner') > 0) {
-            $selected = $em->getRepository(User::class)->find($request->request->getInt('owner'));
+        $ownerId = $request->request->filter('owner', null, \FILTER_VALIDATE_INT, ['flags' => \FILTER_NULL_ON_FAILURE]);
+        if ($this->isGranted('ROLE_ADMIN') && \is_int($ownerId) && $ownerId > 0) {
+            $selected = $em->getRepository(User::class)->find($ownerId);
             if ($selected instanceof User) {
                 $owner = $selected;
             }

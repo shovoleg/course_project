@@ -216,7 +216,8 @@ final class PositionController extends AbstractController
     public function discussion(Position $position, Request $request, DiscussionPostRepository $posts, NameResolver $names, EntityManagerInterface $em): Response
     {
         $this->denyAccessUnlessGranted(PositionVoter::VIEW, $position);
-        $after = $request->query->getInt('after');
+        $after = $request->query->filter('after', null, \FILTER_VALIDATE_INT, ['flags' => \FILTER_NULL_ON_FAILURE]);
+        $after = \is_int($after) ? $after : 0;
         if ($request->isMethod('POST')) {
             $user = $this->getUser();
             if (!$user instanceof User) {

@@ -46,7 +46,7 @@
                                 </div>
                             </div>
                             <div class="list-group mb-2" data-attribute-picker-target="results"></div>
-                            <button class="btn btn-outline-primary btn-sm" type="submit">{{ 'action.add'|trans }}</button>
+                            <button class="btn btn-outline-primary btn-sm" type="submit" data-attribute-picker-target="button" disabled>{{ 'action.add'|trans }}</button>
                         </form>
                         {% if info %}
                             <form method="post" class="mt-3" data-controller="table-toolbar" data-action-template="{{ path('app_profile_attribute_remove', {id: profile.id, attributeId: 999999})|replace({'999999': '__id__'}) }}">

@@ -1,14 +1,24 @@
 import { Controller } from '@hotwired/stimulus';
 
 export default class extends Controller {
-    static targets = ['query', 'category', 'results', 'selected', 'chosen'];
+    static targets = ['query', 'category', 'results', 'selected', 'chosen', 'button'];
     static values = { url: String };
 
     connect() {
+        this._lastPickedName = '';
+        this._updateButton();
         this.search();
     }
 
     search() {
+        if (this.hasChosenTarget && this.hasQueryTarget) {
+            const q = this.queryTarget.value;
+            if (q !== this._lastPickedName) {
+                this.chosenTarget.value = '';
+                this._lastPickedName = '';
+                this._updateButton();
+            }
+        }
         const params = new URLSearchParams({
             q: this.hasQueryTarget ? this.queryTarget.value : '',
             category: this.hasCategoryTarget ? this.categoryTarget.value : '',
@@ -36,9 +46,14 @@ export default class extends Controller {
 
     pick(item) {
         if (this.hasChosenTarget) {
-            this.chosenTarget.value = item.id;
+            this.chosenTarget.value = String(item.id);
+            this._lastPickedName = item.name;
             if (this.hasQueryTarget) {
                 this.queryTarget.value = item.name;
+            }
+            this._updateButton();
+            if (this.hasResultsTarget) {
+                this.resultsTarget.innerHTML = '';
             }
             return;
         }
@@ -69,5 +84,13 @@ export default class extends Controller {
 
     remove(event) {
         event.target.closest('[data-id]')?.remove();
+    }
+
+    _updateButton() {
+        if (!this.hasButtonTarget || !this.hasChosenTarget) {
+            return;
+        }
+        const hasValue = this.chosenTarget.value !== '';
+        this.buttonTarget.disabled = !hasValue;
     }
 }

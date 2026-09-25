@@ -123,7 +123,13 @@ final class ProfileController extends AbstractController
         if (!$this->isCsrfTokenValid('submit', $request->request->getString('_token'))) {
             throw $this->createAccessDeniedException();
         }
-        $attribute = $attributes->find($request->request->getInt('attribute'));
+        $attributeId = $request->request->filter('attribute', null, \FILTER_VALIDATE_INT, ['flags' => \FILTER_NULL_ON_FAILURE]);
+        if (!\is_int($attributeId)) {
+            $this->addFlash('danger', 'error.invalid');
+
+            return $this->redirectToRoute('app_profile_show', ['id' => $user->getId()]);
+        }
+        $attribute = $attributes->find($attributeId);
         if (!$attribute instanceof CvAttribute || $attribute->isBuiltin()) {
             $this->addFlash('danger', 'error.invalid');
 
