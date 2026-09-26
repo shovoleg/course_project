@@ -125,44 +125,7 @@
                         </template>
                     </div>
                 </section>
-                <section class="card">
-                    <div class="card-header">{{ 'profile.cvs'|trans }}</div>
-                    <div class="card-body">
-                        <div data-controller="table-toolbar">
-                            <div class="btn-toolbar gap-2 mb-2">
-                                <button class="btn btn-outline-primary btn-sm" type="button" data-table-toolbar-target="needsSelection" data-action="table-toolbar#open" data-table-toolbar-url-param="{{ path('app_cv_show', {id: 999999})|replace({'999999': '__id__'}) }}">{{ 'action.open'|trans }}</button>
-                                <form method="post" data-action-template="{{ path('app_cv_delete', {id: 999999})|replace({'999999': '__id__'}) }}" data-confirm="{{ 'user.confirm_delete_cv'|trans }}">
-                                    <input type="hidden" name="_token" data-controller="csrf-protection" value="{{ csrf_token('submit') }}">
-                                    <input type="hidden" name="version">
-                                    <button class="btn btn-outline-danger btn-sm" data-table-toolbar-target="needsSelection" data-action="table-toolbar#assign">{{ 'action.delete'|trans }}</button>
-                                </form>
-                            </div>
-                            <div class="table-responsive">
-                                <table class="table table-sm align-middle">
-                                    <thead>
-                                        <tr>
-                                            <th></th>
-                                            <th>{{ 'position.title'|trans }}</th>
-                                            <th>{{ 'common.status'|trans }}</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        {% for cv in cvs %}
-                                            <tr>
-                                                <td><input type="radio" name="cv" value="{{ cv.id }}" data-version="{{ cv.version }}" data-table-toolbar-target="row" data-action="change->table-toolbar#refresh"></td>
-                                                <td><a href="{{ path('app_cv_show', {id: cv.id}) }}">{{ cv.position.title }}</a></td>
-                                                <td>{{ ('cv.status.' ~ cv.status.value)|trans }}</td>
-                                            </tr>
-                                        {% else %}
-                                            <tr><td colspan="3">{{ 'cv.none'|trans }}</td></tr>
-                                        {% endfor %}
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-            </div>
+</div>
         </div>
     </div>
 {% endblock %}
