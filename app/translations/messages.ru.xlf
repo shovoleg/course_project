@@ -218,6 +218,30 @@
         <source>flash.registered</source>
         <target>Учётная запись создана. Можно входить.</target>
       </trans-unit>
+      <trans-unit id="flash.registered_verify">
+        <source>flash.registered_verify</source>
+        <target>Учётная запись создана. Проверьте почту — мы отправили ссылку для подтверждения (действует 24 часа).</target>
+      </trans-unit>
+      <trans-unit id="verify.not_verified">
+        <source>verify.not_verified</source>
+        <target>Почта не подтверждена. Проверьте письмо с ссылкой.</target>
+      </trans-unit>
+      <trans-unit id="verify.invalid">
+        <source>verify.invalid</source>
+        <target>Ссылка недействительна.</target>
+      </trans-unit>
+      <trans-unit id="verify.expired">
+        <source>verify.expired</source>
+        <target>Ссылка просрочена. Зарегистрируйтесь снова.</target>
+      </trans-unit>
+      <trans-unit id="verify.success">
+        <source>verify.success</source>
+        <target>Почта подтверждена. Теперь можно войти.</target>
+      </trans-unit>
+      <trans-unit id="verify.already">
+        <source>verify.already</source>
+        <target>Почта уже подтверждена.</target>
+      </trans-unit>
       <trans-unit id="flash.blocked">
         <source>flash.blocked</source>
         <target>Пользователь заблокирован.</target>

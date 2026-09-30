@@ -218,6 +218,30 @@
         <source>flash.registered</source>
         <target>Account created. You can sign in.</target>
       </trans-unit>
+      <trans-unit id="flash.registered_verify">
+        <source>flash.registered_verify</source>
+        <target>Account created. Check your email for the verification link (valid 24h).</target>
+      </trans-unit>
+      <trans-unit id="verify.not_verified">
+        <source>verify.not_verified</source>
+        <target>Email not verified. Check your inbox for the link.</target>
+      </trans-unit>
+      <trans-unit id="verify.invalid">
+        <source>verify.invalid</source>
+        <target>Invalid verification link.</target>
+      </trans-unit>
+      <trans-unit id="verify.expired">
+        <source>verify.expired</source>
+        <target>Link expired. Please register again.</target>
+      </trans-unit>
+      <trans-unit id="verify.success">
+        <source>verify.success</source>
+        <target>Email verified. You can now log in.</target>
+      </trans-unit>
+      <trans-unit id="verify.already">
+        <source>verify.already</source>
+        <target>Email already verified.</target>
+      </trans-unit>
       <trans-unit id="flash.blocked">
         <source>flash.blocked</source>
         <target>User blocked.</target>

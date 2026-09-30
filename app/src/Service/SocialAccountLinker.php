@@ -29,7 +29,12 @@ final class SocialAccountLinker
         $user = $this->em->getRepository(User::class)->findOneBy(['email' => $email]);
         if (!$user instanceof User) {
             $user = $this->users->create($email, ['ROLE_CANDIDATE'], null);
+            $user->setVerified(true);
             $this->em->persist($user);
+        } elseif (!$user->isVerified()) {
+            $user->setVerified(true);
+            $user->setVerificationToken(null);
+            $user->setVerificationExpiresAt(null);
         }
         new SocialAccount($user, $provider, $providerUserId);
         $this->em->flush();

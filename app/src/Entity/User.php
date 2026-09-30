@@ -39,6 +39,15 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     private bool $blocked = false;
 
+    #[ORM\Column]
+    private bool $isVerified = false;
+
+    #[ORM\Column(length: 64, nullable: true)]
+    private ?string $verificationToken = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?\DateTimeImmutable $verificationExpiresAt = null;
+
     #[ORM\Column(length: 8)]
     private string $locale = 'en';
 
@@ -130,6 +139,36 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         $this->blocked = $blocked;
     }
 
+    public function isVerified(): bool
+    {
+        return $this->isVerified;
+    }
+
+    public function setVerified(bool $verified): void
+    {
+        $this->isVerified = $verified;
+    }
+
+    public function getVerificationToken(): ?string
+    {
+        return $this->verificationToken;
+    }
+
+    public function setVerificationToken(?string $token): void
+    {
+        $this->verificationToken = $token;
+    }
+
+    public function getVerificationExpiresAt(): ?\DateTimeImmutable
+    {
+        return $this->verificationExpiresAt;
+    }
+
+    public function setVerificationExpiresAt(?\DateTimeImmutable $at): void
+    {
+        $this->verificationExpiresAt = $at;
+    }
+
     public function getLocale(): string
     {
         return $this->locale;
@@ -211,6 +250,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
             'password' => $this->password,
             'roles' => $this->roles,
             'blocked' => $this->blocked,
+            'isVerified' => $this->isVerified,
             'locale' => $this->locale,
             'theme' => $this->theme,
             'createdAt' => $this->createdAt,
@@ -226,6 +266,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         $this->password = $data['password'];
         $this->roles = $data['roles'];
         $this->blocked = $data['blocked'];
+        $this->isVerified = $data['isVerified'] ?? false;
         $this->locale = $data['locale'];
         $this->theme = $data['theme'];
         $this->createdAt = $data['createdAt'];

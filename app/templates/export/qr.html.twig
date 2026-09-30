@@ -1,0 +1,70 @@
+{% extends 'base.html.twig' %}
+{% block title %}Печать QR{% endblock %}
+{% block body %}
+<style>
+@media print {
+  nav, .btn-print { display: none !important; }
+  .card { break-inside: avoid; }
+}
+.qr-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1rem; }
+.qr-card { border: 1px solid #dee2e6; border-radius: .5rem; padding: .75rem; text-align: center; background: #fff; }
+.qr-card img { width: 140px; height: 140px; }
+.qr-card .small { font-size: .75rem; word-break: break-all; }
+</style>
+<div class="d-flex justify-content-between align-items-center mb-3">
+  <h1 class="h4 mb-0">Каталог с QR-кодами</h1>
+  <button class="btn btn-primary btn-sm btn-print" onclick="window.print()">Печать / Сохранить PDF</button>
+</div>
+<p class="text-body-secondary small">Каждый QR ведёт обратно в приложение ({{ host }}). Распечатайте и отсканируйте камерой телефона.</p>
+
+<h2 class="h5 mt-4">Позиции</h2>
+{% if positions %}
+<div class="qr-grid">
+{% for p in positions %}
+  {% set url = host ~ path('app_position_show', {id: p.id}) %}
+  <div class="qr-card">
+    <div class="fw-semibold">{{ p.title }}</div>
+    <div class="text-body-secondary small">{{ p.company }} · {{ p.level ? ('position.level.' ~ p.level.value)|trans : '' }}</div>
+    <img src="https://api.qrserver.com/v1/create-qr-code/?size=140x140&data={{ url|url_encode }}" alt="QR" loading="lazy">
+    <div class="small text-body-secondary mt-1">{{ url }}</div>
+  </div>
+{% endfor %}
+</div>
+{% else %}
+<p class="text-body-secondary">Позиций пока нет.</p>
+{% endif %}
+
+<h2 class="h5 mt-4">CV</h2>
+{% if cvs %}
+<div class="qr-grid">
+{% for cv in cvs %}
+  {% set url = host ~ path('app_cv_show', {id: cv.id}) %}
+  <div class="qr-card">
+    <div class="fw-semibold">{{ cv.position.title }}</div>
+    <div class="small">{{ cv.owner.email }} · {{ ('cv.status.' ~ cv.status.value)|trans }}</div>
+    <img src="https://api.qrserver.com/v1/create-qr-code/?size=140x140&data={{ url|url_encode }}" alt="QR" loading="lazy">
+    <div class="small text-body-secondary mt-1">{{ url }}</div>
+  </div>
+{% endfor %}
+</div>
+{% else %}
+<p class="text-body-secondary">CV пока нет.</p>
+{% endif %}
+
+<h2 class="h5 mt-4">Пользователи</h2>
+{% if users %}
+<div class="qr-grid">
+{% for u in users %}
+  {% set url = host ~ path('app_public_profile', {id: u.id}) %}
+  <div class="qr-card">
+    <div class="fw-semibold">{{ u.email }}</div>
+    <div class="small">{{ u.roles|join(', ') }}</div>
+    <img src="https://api.qrserver.com/v1/create-qr-code/?size=140x140&data={{ url|url_encode }}" alt="QR" loading="lazy">
+    <div class="small text-body-secondary mt-1">{{ url }}</div>
+  </div>
+{% endfor %}
+</div>
+{% endif %}
+
+<p class="small text-body-secondary mt-4">Сгенерировано {{ "now"|date("Y-m-d H:i") }} — {{ host }}</p>
+{% endblock %}

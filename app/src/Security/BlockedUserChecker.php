@@ -16,6 +16,9 @@ final class BlockedUserChecker implements UserCheckerInterface
         if ($user instanceof User && $user->isBlocked()) {
             throw new CustomUserMessageAccountStatusException('auth.blocked');
         }
+        if ($user instanceof User && !$user->isVerified()) {
+            throw new CustomUserMessageAccountStatusException('verify.not_verified');
+        }
     }
 
     public function checkPostAuth(UserInterface $user): void
