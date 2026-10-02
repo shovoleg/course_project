@@ -815,6 +815,84 @@
         <source>common.none</source>
         <target>Нет</target>
       </trans-unit>
+    
+      <trans-unit id="salesforce.button">
+        <source>salesforce.button</source>
+        <target>Отправить в Salesforce</target>
+      </trans-unit>
+      <trans-unit id="salesforce.title">
+        <source>salesforce.title</source>
+        <target>Salesforce — экспорт в CRM</target>
+      </trans-unit>
+      <trans-unit id="salesforce.intro">
+        <source>salesforce.intro</source>
+        <target>Отправка профиля %email% в Salesforce как Account + Contact</target>
+      </trans-unit>
+      <trans-unit id="salesforce.company">
+        <source>salesforce.company</source>
+        <target>Компания (Account Name)</target>
+      </trans-unit>
+      <trans-unit id="salesforce.firstName">
+        <source>salesforce.firstName</source>
+        <target>Имя (Contact First Name)</target>
+      </trans-unit>
+      <trans-unit id="salesforce.lastName">
+        <source>salesforce.lastName</source>
+        <target>Фамилия (Contact Last Name)</target>
+      </trans-unit>
+      <trans-unit id="salesforce.phone">
+        <source>salesforce.phone</source>
+        <target>Телефон</target>
+      </trans-unit>
+      <trans-unit id="salesforce.industry">
+        <source>salesforce.industry</source>
+        <target>Индустрия</target>
+      </trans-unit>
+      <trans-unit id="salesforce.description">
+        <source>salesforce.description</source>
+        <target>Дополнительно</target>
+      </trans-unit>
+      <trans-unit id="salesforce.newsletter">
+        <source>salesforce.newsletter</source>
+        <target>Подписаться на новости</target>
+      </trans-unit>
+      <trans-unit id="salesforce.submit">
+        <source>salesforce.submit</source>
+        <target>Создать в Salesforce</target>
+      </trans-unit>
+      <trans-unit id="salesforce.not_configured">
+        <source>salesforce.not_configured</source>
+        <target>Salesforce не настроен — будет мок-режим (данные не уйдут, но форма отработает). Заполни .env SALESFORCE_*</target>
+      </trans-unit>
+      <trans-unit id="salesforce.success">
+        <source>salesforce.success</source>
+        <target>Успешно создано в Salesforce!</target>
+      </trans-unit>
+      <trans-unit id="salesforce.mock">
+        <source>salesforce.mock</source>
+        <target>Мок-режим: Salesforce не настроен, запись не отправлена (проверь .env)</target>
+      </trans-unit>
+      <trans-unit id="salesforce.industry.tech">
+        <source>salesforce.industry.tech</source>
+        <target>Технологии</target>
+      </trans-unit>
+      <trans-unit id="salesforce.industry.finance">
+        <source>salesforce.industry.finance</source>
+        <target>Финансы</target>
+      </trans-unit>
+      <trans-unit id="salesforce.industry.education">
+        <source>salesforce.industry.education</source>
+        <target>Образование</target>
+      </trans-unit>
+      <trans-unit id="salesforce.industry.health">
+        <source>salesforce.industry.health</source>
+        <target>Медицина</target>
+      </trans-unit>
+      <trans-unit id="salesforce.industry.other">
+        <source>salesforce.industry.other</source>
+        <target>Другое</target>
+      </trans-unit>
+
     </body>
   </file>
 </xliff>

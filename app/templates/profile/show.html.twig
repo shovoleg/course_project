@@ -8,6 +8,9 @@
             <h1 class="h3 mb-0">{{ profile.email }}</h1>
             <div class="d-flex align-items-center gap-2">
                 <span class="text-body-secondary" data-autosave-target="status"></span>
+                {% if is_granted('ROLE_USER') and (app.user and (app.user.id == profile.id or is_granted('ROLE_ADMIN'))) %}
+                    <a class="btn btn-outline-success btn-sm" href="{{ path('app_salesforce_form', {id: profile.id}) }}">{{ 'salesforce.button'|trans }}</a>
+                {% endif %}
                 <button class="btn btn-primary btn-sm" type="button" data-action="autosave#saveNow">{{ 'action.save'|trans }}</button>
             </div>
         </div>

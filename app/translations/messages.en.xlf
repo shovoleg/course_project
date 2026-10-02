@@ -815,6 +815,84 @@
         <source>common.none</source>
         <target>None</target>
       </trans-unit>
+    
+      <trans-unit id="salesforce.button">
+        <source>salesforce.button</source>
+        <target>Send to Salesforce</target>
+      </trans-unit>
+      <trans-unit id="salesforce.title">
+        <source>salesforce.title</source>
+        <target>Salesforce — CRM export</target>
+      </trans-unit>
+      <trans-unit id="salesforce.intro">
+        <source>salesforce.intro</source>
+        <target>Send profile %email% to Salesforce as Account + Contact</target>
+      </trans-unit>
+      <trans-unit id="salesforce.company">
+        <source>salesforce.company</source>
+        <target>Company (Account Name)</target>
+      </trans-unit>
+      <trans-unit id="salesforce.firstName">
+        <source>salesforce.firstName</source>
+        <target>First name (Contact)</target>
+      </trans-unit>
+      <trans-unit id="salesforce.lastName">
+        <source>salesforce.lastName</source>
+        <target>Last name (Contact)</target>
+      </trans-unit>
+      <trans-unit id="salesforce.phone">
+        <source>salesforce.phone</source>
+        <target>Phone</target>
+      </trans-unit>
+      <trans-unit id="salesforce.industry">
+        <source>salesforce.industry</source>
+        <target>Industry</target>
+      </trans-unit>
+      <trans-unit id="salesforce.description">
+        <source>salesforce.description</source>
+        <target>Additional info</target>
+      </trans-unit>
+      <trans-unit id="salesforce.newsletter">
+        <source>salesforce.newsletter</source>
+        <target>Subscribe to newsletter</target>
+      </trans-unit>
+      <trans-unit id="salesforce.submit">
+        <source>salesforce.submit</source>
+        <target>Create in Salesforce</target>
+      </trans-unit>
+      <trans-unit id="salesforce.not_configured">
+        <source>salesforce.not_configured</source>
+        <target>Salesforce not configured — mock mode (no real API call). Fill .env SALESFORCE_*</target>
+      </trans-unit>
+      <trans-unit id="salesforce.success">
+        <source>salesforce.success</source>
+        <target>Successfully created in Salesforce!</target>
+      </trans-unit>
+      <trans-unit id="salesforce.mock">
+        <source>salesforce.mock</source>
+        <target>Mock mode: Salesforce not configured, nothing sent (check .env)</target>
+      </trans-unit>
+      <trans-unit id="salesforce.industry.tech">
+        <source>salesforce.industry.tech</source>
+        <target>Technology</target>
+      </trans-unit>
+      <trans-unit id="salesforce.industry.finance">
+        <source>salesforce.industry.finance</source>
+        <target>Finance</target>
+      </trans-unit>
+      <trans-unit id="salesforce.industry.education">
+        <source>salesforce.industry.education</source>
+        <target>Education</target>
+      </trans-unit>
+      <trans-unit id="salesforce.industry.health">
+        <source>salesforce.industry.health</source>
+        <target>Healthcare</target>
+      </trans-unit>
+      <trans-unit id="salesforce.industry.other">
+        <source>salesforce.industry.other</source>
+        <target>Other</target>
+      </trans-unit>
+
     </body>
   </file>
 </xliff>

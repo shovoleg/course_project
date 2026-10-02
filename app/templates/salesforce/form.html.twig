@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{ 'salesforce.title'|trans }}{% endblock %}
+{% block body %}
+<div class="row justify-content-center">
+  <div class="col-md-7 col-lg-6">
+    <h1 class="h3 mb-3">{{ 'salesforce.title'|trans }}</h1>
+    <p class="text-body-secondary small">{{ 'salesforce.intro'|trans({'%email%': profile.email}) }}</p>
+    {% if not configured %}
+      <div class="alert alert-warning">{{ 'salesforce.not_configured'|trans }}</div>
+    {% endif %}
+    {{ form_start(form) }}
+      {{ form_row(form.company) }}
+      <div class="row g-2">
+        <div class="col">{{ form_row(form.firstName) }}</div>
+        <div class="col">{{ form_row(form.lastName) }}</div>
+      </div>
+      {{ form_row(form.phone) }}
+      {{ form_row(form.industry) }}
+      {{ form_row(form.description) }}
+      {{ form_row(form.newsletter) }}
+      <div class="d-flex gap-2 mt-3">
+        <button class="btn btn-primary" type="submit">{{ 'salesforce.submit'|trans }}</button>
+        <a class="btn btn-outline-secondary" href="{{ path('app_profile_show', {id: profile.id}) }}">{{ 'action.back'|trans }}</a>
+      </div>
+    {{ form_end(form) }}
+    <div class="mt-4 p-3 bg-body-tertiary rounded small">
+      <strong>Что улетит в Salesforce:</strong>
+      <ul class="mb-0">
+        <li>Account: Name=company, Phone, Industry, Description=ID+Email+Locale+Theme</li>
+        <li>Contact: FirstName/LastName/Email/Phone связан с Account</li>
+      </ul>
+      <div class="text-body-secondary mt-2">REST API: POST /services/oauth2/token → /services/data/v59.0/sobjects/Account → /services/data/v59.0/sobjects/Contact</div>
+    </div>
+  </div>
+</div>
+{% endblock %}
