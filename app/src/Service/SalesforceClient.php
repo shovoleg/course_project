@@ -35,22 +35,34 @@ final class SalesforceClient
         if (!$this->isConfigured()) {
             throw new \RuntimeException('Salesforce not configured');
         }
-        $url = rtrim($this->instanceUrl, '/') . '/services/oauth2/token';
-        $response = $this->http->request('POST', $url, [
-            'headers' => ['Content-Type' => 'application/x-www-form-urlencoded'],
-            'body' => http_build_query([
-                'grant_type' => 'password',
-                'client_id' => $this->clientId,
-                'client_secret' => $this->clientSecret,
-                'username' => $this->username,
-                'password' => $this->password . $this->securityToken,
-            ]),
-        ]);
-        $data = $response->toArray(false);
-        if (!isset($data['access_token'])) {
-            throw new \RuntimeException($data['error_description'] ?? 'Salesforce auth failed');
+        $candidates = [
+            'https://login.salesforce.com/services/oauth2/token',
+            rtrim($this->instanceUrl, '/') . '/services/oauth2/token',
+        ];
+        $candidates = array_unique($candidates);
+        $lastError = null;
+        foreach ($candidates as $url) {
+            $response = $this->http->request('POST', $url, [
+                'headers' => ['Content-Type' => 'application/x-www-form-urlencoded'],
+                'body' => http_build_query([
+                    'grant_type' => 'password',
+                    'client_id' => $this->clientId,
+                    'client_secret' => $this->clientSecret,
+                    'username' => $this->username,
+                    'password' => $this->password . $this->securityToken,
+                ]),
+            ]);
+            $data = $response->toArray(false);
+            if (isset($data['access_token'])) {
+                return $data;
+            }
+            $lastError = $data['error_description'] ?? $data['error'] ?? json_encode($data);
+            if (str_contains(strtolower($lastError), 'client identifier invalid') && $url === $candidates[0]) {
+                continue;
+            }
+            break;
         }
-        return $data;
+        throw new \RuntimeException($lastError ?? 'Salesforce auth failed');
     }
 
     public function createAccountWithContact(array $accountData, array $contactData): array
