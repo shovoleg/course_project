@@ -27,7 +27,7 @@ final class SalesforceClient
 
     public function isConfigured(): bool
     {
-        return $this->instanceUrl !== '' && $this->clientId !== '' && $this->username !== '' && $this->password !== '';
+        return $this->instanceUrl !== '' && $this->clientId !== '' && $this->clientSecret !== '';
     }
 
     private function authenticate(): array
@@ -40,27 +40,32 @@ final class SalesforceClient
             rtrim($this->instanceUrl, '/') . '/services/oauth2/token',
         ];
         $candidates = array_unique($candidates);
+        $flows = [
+            ['grant_type' => 'client_credentials', 'client_id' => $this->clientId, 'client_secret' => $this->clientSecret],
+        ];
+        if ($this->username !== '' && $this->password !== '') {
+            $flows[] = ['grant_type' => 'password', 'client_id' => $this->clientId, 'client_secret' => $this->clientSecret, 'username' => $this->username, 'password' => $this->password . $this->securityToken];
+        }
         $lastError = null;
-        foreach ($candidates as $url) {
-            $response = $this->http->request('POST', $url, [
-                'headers' => ['Content-Type' => 'application/x-www-form-urlencoded'],
-                'body' => http_build_query([
-                    'grant_type' => 'password',
-                    'client_id' => $this->clientId,
-                    'client_secret' => $this->clientSecret,
-                    'username' => $this->username,
-                    'password' => $this->password . $this->securityToken,
-                ]),
-            ]);
-            $data = $response->toArray(false);
+        foreach ($flows as $flow) {
+            foreach ($candidates as $url) {
+                $response = $this->http->request('POST', $url, [
+                    'headers' => ['Content-Type' => 'application/x-www-form-urlencoded'],
+                    'body' => http_build_query($flow),
+                ]);
+                $data = $response->toArray(false);
+                if (isset($data['access_token'])) {
+                    return $data;
+                }
+                $lastError = $data['error_description'] ?? $data['error'] ?? json_encode($data);
+                if (str_contains(strtolower($lastError), 'client identifier invalid') && $url === $candidates[0]) {
+                    continue;
+                }
+                break;
+            }
             if (isset($data['access_token'])) {
-                return $data;
+                break;
             }
-            $lastError = $data['error_description'] ?? $data['error'] ?? json_encode($data);
-            if (str_contains(strtolower($lastError), 'client identifier invalid') && $url === $candidates[0]) {
-                continue;
-            }
-            break;
         }
         throw new \RuntimeException($lastError ?? 'Salesforce auth failed');
     }
