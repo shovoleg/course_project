@@ -1,0 +1,56 @@
+<odoo>
+  <record id="view_course_position_tree" model="ir.ui.view">
+    <field name="name">course.position.tree</field>
+    <field name="model">course.position</field>
+    <field name="arch" type="xml">
+      <tree string="Imported Positions">
+        <field name="name"/>
+        <field name="company"/>
+        <field name="level"/>
+        <field name="cv_count"/>
+        <field name="token"/>
+        <field name="imported_at"/>
+      </tree>
+    </field>
+  </record>
+  <record id="view_course_position_form" model="ir.ui.view">
+    <field name="name">course.position.form</field>
+    <field name="model">course.position</field>
+    <field name="arch" type="xml">
+      <form string="Position">
+        <sheet>
+          <group>
+            <field name="name" readonly="1"/>
+            <field name="external_id" readonly="1"/>
+            <field name="company" readonly="1"/>
+            <field name="level" readonly="1"/>
+            <field name="cv_count" readonly="1"/>
+            <field name="token" readonly="1"/>
+            <field name="api_url" readonly="1" widget="url"/>
+            <field name="imported_at" readonly="1"/>
+          </group>
+          <notebook>
+            <page string="Attributes &amp; Aggregation" name="attributes">
+              <field name="attribute_line_ids" readonly="1">
+                <tree>
+                  <field name="name"/>
+                  <field name="type"/>
+                  <field name="category"/>
+                  <field name="count"/>
+                  <field name="display_value" string="Aggregated"/>
+                </tree>
+              </field>
+            </page>
+          </notebook>
+        </sheet>
+      </form>
+    </field>
+  </record>
+  <record id="action_course_position" model="ir.actions.act_window">
+    <field name="name">Imported Positions</field>
+    <field name="res_model">course.position</field>
+    <field name="view_mode">tree,form</field>
+  </record>
+  <menuitem id="menu_course_position_root" name="Course Import" sequence="90"/>
+  <menuitem id="menu_course_position" name="Positions" parent="menu_course_position_root" action="action_course_position" sequence="1"/>
+</odoo>

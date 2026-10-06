@@ -247,6 +247,18 @@ final class PositionController extends AbstractController
         ]);
     }
 
+
+    #[Route('/positions/{id}/api-token', name: 'app_position_api_token', requirements: ['id' => '\\d+'])]
+    public function apiToken(Position $position, EntityManagerInterface $em): Response
+    {
+        $this->denyAccessUnlessGranted(PositionVoter::EDIT, $position);
+        $token = $position->ensureApiToken();
+        $em->flush();
+        $url = $this->generateUrl('api_external_position', ['token' => $token], 0);
+        $full = rtrim($_ENV['DEFAULT_URI'] ?? '', '/') . $url;
+        return $this->render('position/api_token.html.twig', ['position' => $position, 'token' => $token, 'url' => $full]);
+    }
+
     private function catalog(CvAttributeRepository $attributes): array
     {
         $catalog = [];

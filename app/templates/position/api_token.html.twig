@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+{% block title %}API Token{% endblock %}
+{% block body %}
+<div class="row justify-content-center">
+  <div class="col-md-8">
+    <h1 class="h3">{{ position.title }} — API token</h1>
+    <div class="card">
+      <div class="card-body">
+        <p class="text-body-secondary">Скопируйте токен и передайте в Odoo. Токен даёт доступ только к этой позиции.</p>
+        <div class="mb-3">
+          <label class="form-label">Token</label>
+          <div class="input-group">
+            <input class="form-control" value="{{ token }}" readonly onclick="this.select()">
+            <button class="btn btn-outline-secondary" onclick="navigator.clipboard.writeText('{{ token }}')">Copy</button>
+          </div>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">API URL</label>
+          <div class="input-group">
+            <input class="form-control" value="{{ url }}" readonly onclick="this.select()">
+            <button class="btn btn-outline-secondary" onclick="navigator.clipboard.writeText('{{ url }}')">Copy</button>
+          </div>
+          <div class="form-text">GET {{ url }} → JSON с агрегированными результатами</div>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Пример curl</label>
+          <pre class="bg-body-tertiary p-2 rounded small">curl "{{ url }}" | jq</pre>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Odoo</label>
+          <p class="small">В Odoo: <em>Course Import → Create → вставь токен → Import</em>. Odoo заберёт <code>position.title</code>, <code>attributes[]</code> с <code>avg/min/max</code> для numeric и <code>popular</code> для text.</p>
+        </div>
+        <a class="btn btn-secondary" href="{{ path('app_position_show', {id: position.id}) }}">Назад к позиции</a>
+        <a class="btn btn-outline-primary" href="{{ url }}" target="_blank">Открыть JSON</a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

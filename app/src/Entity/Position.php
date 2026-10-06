@@ -46,6 +46,9 @@ class Position
     #[Assert\LessThanOrEqual(50)]
     private int $maxProjects = 3;
 
+    #[ORM\Column(length: 64, nullable: true, unique: true)]
+    private ?string $apiToken = null;
+
     #[ORM\Column]
     private \DateTimeImmutable $createdAt;
 
@@ -227,5 +230,23 @@ class Position
     public function getPosts(): Collection
     {
         return $this->posts;
+    }
+
+    public function getApiToken(): ?string
+    {
+        return $this->apiToken;
+    }
+
+    public function setApiToken(?string $apiToken): void
+    {
+        $this->apiToken = $apiToken;
+    }
+
+    public function ensureApiToken(): string
+    {
+        if ($this->apiToken === null || $this->apiToken === '') {
+            $this->apiToken = bin2hex(random_bytes(32));
+        }
+        return $this->apiToken;
     }
 }

@@ -11,6 +11,7 @@
         <div class="btn-toolbar gap-2">
             {% if is_granted('POSITION_EDIT', position) %}
                 <a class="btn btn-outline-primary btn-sm" href="{{ path('app_position_edit', {id: position.id}) }}">{{ 'action.edit'|trans }}</a>
+                <a class="btn btn-outline-secondary btn-sm" href="{{ path('app_position_api_token', {id: position.id}) }}">API token</a>
             {% endif %}
             {% if canCreate %}
                 <form method="post" action="{{ path('app_cv_create', {id: position.id}) }}">
