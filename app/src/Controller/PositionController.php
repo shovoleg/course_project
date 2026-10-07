@@ -25,6 +25,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
 final class PositionController extends AbstractController
@@ -254,8 +255,7 @@ final class PositionController extends AbstractController
         $this->denyAccessUnlessGranted(PositionVoter::EDIT, $position);
         $token = $position->ensureApiToken();
         $em->flush();
-        $url = $this->generateUrl('api_external_position', ['token' => $token], 0);
-        $full = rtrim($_ENV['DEFAULT_URI'] ?? '', '/') . $url;
+        $full = $this->generateUrl('api_external_position', ['token' => $token], UrlGeneratorInterface::ABSOLUTE_URL);
         return $this->render('position/api_token.html.twig', ['position' => $position, 'token' => $token, 'url' => $full]);
     }
 
