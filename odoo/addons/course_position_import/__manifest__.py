@@ -8,8 +8,8 @@
     'depends': ['base'],
     'data': [
         'security/ir.model.access.csv',
-        'wizard/import_wizard_views.xml',
         'views/position_views.xml',
+        'wizard/import_wizard_views.xml',
     ],
     'installable': True,
     'application': True,
